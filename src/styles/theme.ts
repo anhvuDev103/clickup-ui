@@ -11,43 +11,22 @@ export const getDesignTokens = (mode: Mode) => {
 
   return {
     palette: {
-      common: {
-        white: '#ffffff',
-        white20: '#ffffff33',
-        white40: '#ffffff66',
-        white60: '#ffffff99',
-        black: '#000000',
-        black10: '#0000001a',
-        black60: '#00000099',
-        muted: '#00000040',
-      },
-      success: {
-        main: getColor('#4edb95', ''),
-        hover: getColor('#4edb9599', ''),
-        contrast: getColor('#000000', ''),
-        '60': getColor('#4edb9599', ''),
-      },
-      warning: {
-        main: getColor('#ffca02', ''),
-        hover: getColor('#ffca0299', ''),
-        contrast: getColor('#000000', ''),
-      },
-      danger: {
-        main: getColor('#ff5a58', ''),
-        hover: getColor('#ff5a5899', ''),
-        contrast: getColor('#ffffff', ''),
-      },
-      disabled: {
-        main: getColor('#e5e5e5', ''),
-        hover: getColor('#e5e5e599', ''),
-        contrast: getColor('#8b8b8b', ''),
-      },
       background: {
-        default: getColor('#8c87c3', ''),
-        paper: getColor('#ffffff', ''),
+        main: getColor('#ffffff', ''),
+        hover: getColor('#f7f8f9', ''),
+        border: getColor('#f0f1f3', ''),
+        content: {
+          main: getColor('#2a2e34', ''),
+          secondary: getColor('#656f7d', ''),
+        },
       },
-      border: {
-        main: getColor('#000000', ''),
+      surface: {
+        main: getColor('#f7f8f9', ''),
+        hover: getColor('#f0f1f3', ''),
+        border: getColor('#f0f1f3', ''),
+        content: {
+          main: getColor('#4f5762', ''),
+        },
       },
     },
     typography: {
