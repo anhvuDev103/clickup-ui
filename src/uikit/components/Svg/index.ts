@@ -1,0 +1,10 @@
+export { default as AddCircleIcon } from './AddCircle';
+export { default as CameraIcon } from './Camera';
+export { default as ChevronDownIcon } from './ChevronDown';
+export { default as CircleCheckFilledIcon } from './CircleCheckFilled';
+export { default as ClockIcon } from './Clock';
+export { default as DocsIcon } from './Docs';
+export { default as NineDotsIcon } from './NineDots';
+export { default as NotepadIcon } from './Notepad';
+export { default as SearchIcon } from './Search';
+export { default as UserStatusIcon } from './UserStatus';

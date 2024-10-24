@@ -1,4 +1,6 @@
 import './index.css';
+import 'normalize.css';
+import './styles/fonts.css';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
