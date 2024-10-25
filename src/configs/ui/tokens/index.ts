@@ -1,5 +1,5 @@
 import { baseTokens } from './base';
-import { lightColors } from './colors';
+import { darkColors, lightColors } from './colors';
 import { ColorTokens, Tokens } from './types';
 
 type Mode = 'dark' | 'light';
@@ -10,7 +10,7 @@ export const getDesignTokens = (mode: Mode): Tokens => {
       colors: lightColors,
     },
     dark: {
-      colors: lightColors,
+      colors: darkColors,
     },
   }[mode] as ColorTokens;
 

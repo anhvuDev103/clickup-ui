@@ -1,13 +1,12 @@
+import Avatar from '@components/Avatar';
 import { Flex } from '@uikit';
-import { ChevronDownIcon } from '@uikit/components/Svg';
+import { ChevronDownIcon } from '@uikit/icons';
 import styled from 'styled-components';
-
-import Avatar from './Avatar';
 
 const ProfileSettings = () => {
   return (
     <ProfileSettingsFrame gap={0.5} ml='6px'>
-      <Avatar username='Vu Duc Anh' />
+      <Avatar size={20} label='Vu Duc Anh' borderRadius='full' />
       <ChevronDownIcon width={10} height={10} mr='2px' color='contentOnDark' />
     </ProfileSettingsFrame>
   );

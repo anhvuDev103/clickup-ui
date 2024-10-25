@@ -13,6 +13,7 @@ export const lightColors = {
   backgroundButtonHover: '#f0f1f3',
   backgroundOnDarkPressed: '#ffffff33',
   backgroundAvatarCutOut: '#2d4442',
+  backgroundAvatarSpace: '#b2e0e0',
 
   //border
   borderDefault: '#e8eaed',
@@ -29,4 +30,37 @@ export const lightColors = {
   contentDisabled: '#adb3bd',
   contentOnDarkDisabled: '#ffffff80',
   contentButton: '#4f5762',
+};
+
+export const darkColors = {
+  //background
+  backgroundMain: '',
+  backgroundSubtle: '',
+  backgroundMainHoverStrong: '',
+  backgroundStatusGroupHeader: '',
+  backgroundGlobalActionsBar: '',
+  backgroundOnDarkHover: '',
+  backgroundPrimary: '',
+  backgroundPrimaryHover: '',
+  backgroundPrimaryActive: '',
+  backgroundPrimaryDisabled: '',
+  backgroundButtonHover: '',
+  backgroundOnDarkPressed: '',
+  backgroundAvatarCutOut: '',
+
+  //border
+  borderDefault: '',
+  borderLowContrast: '',
+
+  //content
+  contentDefault: '',
+  contentSecondary: '',
+  contentTertiary: '',
+  contentPlaceholder: '',
+  contentStatusGroupHeaderLabel: '',
+  contentOnDarkSecondary: '',
+  contentOnDark: '',
+  contentDisabled: '',
+  contentOnDarkDisabled: '',
+  contentButton: '',
 };

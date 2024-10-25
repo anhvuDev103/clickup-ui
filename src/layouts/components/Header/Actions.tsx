@@ -1,5 +1,4 @@
 import { Flex } from '@uikit';
-import { FlexProps } from '@uikit/components/Box/types';
 import Button from '@uikit/components/Button';
 import { Separator } from '@uikit/components/Separator';
 import {
@@ -10,7 +9,8 @@ import {
   DocsIcon,
   NineDotsIcon,
   NotepadIcon,
-} from '@uikit/components/Svg';
+} from '@uikit/icons';
+import { FlexProps } from '@uikit/types';
 
 import ProfileSettings from './ProfileSettings';
 
@@ -20,7 +20,7 @@ const Actions: React.FC<FlexProps> = (props) => {
       <Button mr={1} variant='text' startIcon={<AddCircleIcon width={16} height={16} />} color='contentOnDark'>
         New
       </Button>
-      <Separator />
+      <Separator backgroundColor='backgroundOnDarkPressed' />
       <Flex gap={1} ml={1}>
         <Button variant='text' color='contentOnDark' square>
           <CircleCheckFilledIcon width={16} height={16} />

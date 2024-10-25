@@ -1,3 +1,4 @@
+import { Theme } from '@configs/ui/tokens';
 import {
   BackgroundProps,
   BorderProps,
@@ -8,8 +9,14 @@ import {
   SpaceProps,
 } from 'styled-system';
 
-export interface BoxProps extends BackgroundProps, BorderProps, LayoutProps, PositionProps, SpaceProps, ColorProps {}
+export interface BoxProps
+  extends BackgroundProps,
+    BorderProps<Theme>,
+    LayoutProps,
+    PositionProps,
+    SpaceProps,
+    ColorProps<Theme> {}
 
 export interface FlexProps extends BoxProps, FlexboxProps {
-  gap?: number;
+  gap?: number | `${number}px`;
 }

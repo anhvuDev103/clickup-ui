@@ -15,11 +15,21 @@ export const GlobalStyles = createGlobalStyle`
       padding: 0;
     }
 
+    html {
+      height: 100%;
+    }
+
     body {
       /* 3. Add accessible line-height */
       line-height: 1.5;
       /* 4. Improve text rendering */
       -webkit-font-smoothing: antialiased;
+
+      height: 100%;
+    }
+
+    #root {
+      height: 100%;
     }
 
     /* 5. Improve media defaults */

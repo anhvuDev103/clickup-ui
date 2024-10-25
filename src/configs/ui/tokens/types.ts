@@ -1,35 +1,12 @@
+import _ from 'lodash';
+
+import { baseTokens } from './base';
+import { darkColors, lightColors } from './colors';
+
+const _mergedColorTokens = _.merge({}, lightColors, darkColors);
+
 export interface ColorTokens {
-  colors: {
-    //background
-    backgroundMain: string;
-    backgroundSubtle: string;
-    backgroundMainHoverStrong: string;
-    backgroundStatusGroupHeader: string;
-    backgroundGlobalActionsBar: string;
-    backgroundOnDarkHover: string;
-    backgroundPrimary: string;
-    backgroundPrimaryHover: string;
-    backgroundPrimaryActive: string;
-    backgroundPrimaryDisabled: string;
-    backgroundButtonHover: string;
-    backgroundOnDarkPressed: string;
-
-    //border
-    borderDefault: string;
-    borderLowContrast: string;
-
-    //content
-    contentDefault: string;
-    contentSecondary: string;
-    contentTertiary: string;
-    contentPlaceholder: string;
-    contentStatusGroupHeaderLabel: string;
-    contentOnDarkSecondary: string;
-    contentOnDark: string;
-    contentDisabled: string;
-    contentOnDarkDisabled: string;
-    contentButton: string;
-  };
+  colors: Record<keyof typeof _mergedColorTokens, string>;
 }
 
 export interface BaseTokens {
@@ -37,10 +14,7 @@ export interface BaseTokens {
     primary: string;
     secondary: string;
   };
-  radii: {
-    [key: string]: number;
-    full: number;
-  };
+  radii: Record<number | `${number}px` | keyof typeof baseTokens.radii, number>;
 }
 
 export interface Tokens extends BaseTokens, ColorTokens {}

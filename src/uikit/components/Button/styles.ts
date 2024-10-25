@@ -38,15 +38,15 @@ const scaleVariants = {
   [scales.XS]: {
     height: 24,
     borderRadius: getSpacingValue(1),
-    paddingInline: 7,
+    paddingInline: 8,
     lineHeight: '16px',
 
     '&:has(.Button_startIcon)': {
-      paddingLeft: '5px',
+      paddingLeft: '4px',
     },
 
     '&:has(.Button_endIcon)': {
-      paddingRight: '5px',
+      paddingRight: '4px',
     },
 
     '&.Button_square': {

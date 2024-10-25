@@ -1,6 +1,6 @@
-import Text, { Flex } from '@uikit';
-import { FlexProps } from '@uikit/components/Box/types';
-import { SearchIcon } from '@uikit/components/Svg';
+import { Flex, Text } from '@uikit';
+import { SearchIcon } from '@uikit/icons';
+import { FlexProps } from '@uikit/types';
 import styled from 'styled-components';
 
 const Search: React.FC<FlexProps> = (props) => {
@@ -14,7 +14,7 @@ const Search: React.FC<FlexProps> = (props) => {
   );
 };
 
-const SearchFrame = styled(Flex)`
+const SearchFrame = styled(Flex)<FlexProps>`
   position: relative;
   overflow: hidden;
 

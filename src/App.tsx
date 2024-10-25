@@ -1,14 +1,32 @@
-import { GlobalStyles } from '@configs/ui/globalStyles';
-import { getDesignTokens } from '@configs/ui/tokens';
-import DefaultLayout from '@layouts/DefaultLayout';
-import { ThemeProvider } from 'styled-components';
+import { ROUTES } from '@configs/app/routes';
+import MainLayout from '@layouts/MainLayout';
+import StyleProvider from '@providers/StyleProvider';
+import { AppFrame } from '@styles';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <ThemeProvider theme={getDesignTokens('light')}>
-      <GlobalStyles />
-      <DefaultLayout />
-    </ThemeProvider>
+    <StyleProvider>
+      <AppFrame>
+        <Routes>
+          {ROUTES.map((route) => {
+            const Page = route.component;
+
+            return (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={
+                  <MainLayout>
+                    <Page />
+                  </MainLayout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </AppFrame>
+    </StyleProvider>
   );
 }
 

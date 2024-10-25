@@ -4,7 +4,12 @@ import { background, border, color, flexbox, layout, position, space } from 'sty
 
 import { BoxProps, FlexProps } from './types';
 
-const getGap = ({ gap }: { gap?: number }) => (gap ? getSpacingValue(gap) + 'px' : 'unset');
+const getGap = ({ gap }: { gap?: number | `${number}px` }) => {
+  if (!gap) return 'unset';
+
+  if (typeof gap === 'number') return getSpacingValue(gap) + 'px';
+  return gap;
+};
 
 export const Box = styled.div<BoxProps>`
   ${background}

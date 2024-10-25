@@ -33,7 +33,7 @@ const Button: React.FC<ButtonProps> = ({
     <ButtonFrame
       scale={scale}
       variant={variant}
-      className={classNames([className, { Button_square: square }])}
+      className={classNames([className, variant, { Button_square: square }])}
       {...props}
     >
       {startIcon && <div className='Button_startIcon'>{startIcon}</div>}

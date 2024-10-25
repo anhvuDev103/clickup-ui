@@ -1,3 +1,4 @@
+import { ColorTokens } from '@configs/ui/tokens/types';
 import { SpaceProps } from 'styled-system';
 
 export const scales = {
@@ -12,14 +13,14 @@ export const variants = {
   CONTAINED: 'contained',
 } as const;
 
-export type Scale = (typeof scales)[keyof typeof scales];
-export type Variant = (typeof variants)[keyof typeof variants];
+type Scale = (typeof scales)[keyof typeof scales];
+type Variant = (typeof variants)[keyof typeof variants];
 
 export interface ButtonProps extends SpaceProps {
   scale?: Scale;
   variant?: Variant;
   square?: boolean;
-  color?: string;
+  color?: keyof ColorTokens['colors'] | (string & {});
 
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
