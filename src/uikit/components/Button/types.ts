@@ -19,7 +19,11 @@ export const variants = {
 type Scale = (typeof scales)[keyof typeof scales];
 type Variant = (typeof variants)[keyof typeof variants];
 
-export interface ButtonProps extends SpaceProps, LayoutProps, FlexboxProps {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    SpaceProps,
+    LayoutProps,
+    FlexboxProps {
   scale?: Scale;
   variant?: Variant;
   square?: boolean;

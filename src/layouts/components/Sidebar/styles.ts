@@ -65,6 +65,14 @@ export const NavigatorFrame = styled(Flex)`
 export const NavigatorItem = styled(SidebarItem)``;
 
 export const FavoritesFrame = styled(Flex)`
+  &.Favorites_isExpand {
+    .Favorites_expanseBtn {
+      svg {
+        rotate: 0deg;
+      }
+    }
+  }
+
   .Favorites_expanseBtn {
     gap: 0;
 
@@ -72,6 +80,11 @@ export const FavoritesFrame = styled(Flex)`
       background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
 
       cursor: pointer;
+    }
+
+    svg {
+      rotate: -90deg;
+      transition: 200ms;
     }
   }
 
@@ -81,6 +94,12 @@ export const FavoritesFrame = styled(Flex)`
 
       cursor: pointer;
     }
+  }
+
+  .Favorites_list {
+    max-height: 0;
+    overflow: hidden;
+    transition: 200ms;
   }
 `;
 

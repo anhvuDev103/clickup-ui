@@ -14,7 +14,7 @@ Separator.defaultProps = {
 
 export const Divider = styled(Box)`
   width: 100%;
-  height: 1px;
+  min-height: 1px;
   margin-block: 8px;
 `;
 
