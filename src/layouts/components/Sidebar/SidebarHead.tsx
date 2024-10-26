@@ -13,7 +13,7 @@ const SidebarHead = () => {
         <ChevronDownIcon width={10} height={10} ml={1} mr='2px' color='contentSecondary' />
       </Flex>
       <Button variant='text' className='Sidebar_sidebarToggleBtn' square>
-        <SidebarToggleIcon color='contentSecondary' />
+        <SidebarToggleIcon width={20} height={20} color='contentSecondary' />
       </Button>
     </Flex>
   );

@@ -13,13 +13,17 @@ const Button: React.FC<ButtonProps> = ({
   endIcon,
   square,
   className,
+  textVariant: _textVariant,
   ...props
 }) => {
-  const textVariant = {
-    [scales.XS]: 'medium12',
-    [scales.SM]: 'medium14',
-    [scales.MD]: 'medium14',
-  }[scale] as TextVariant;
+  const textVariant =
+    _textVariant ||
+    ({
+      [scales.XXS]: 'medium12',
+      [scales.XS]: 'medium12',
+      [scales.SM]: 'medium14',
+      [scales.MD]: 'medium14',
+    }[scale] as TextVariant);
 
   const textColor =
     props.color ||
@@ -38,7 +42,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {startIcon && <div className='Button_startIcon'>{startIcon}</div>}
 
-      <Text variant={textVariant} color={textColor}>
+      <Text variant={textVariant} color={textColor} className='Button_label'>
         {children}
       </Text>
 

@@ -14,9 +14,12 @@ export const lightColors = {
   backgroundOnDarkPressed: '#ffffff33',
   backgroundAvatarCutOut: '#2d4442',
   backgroundAvatarSpace: '#b2e0e0',
+  backgroundOnMainHover: '#e8eaed',
+  backgroundOnSubtleHover: '#d6d9de',
 
   //border
   borderDefault: '#e8eaed',
+  borderHover: '#adb3bd',
   borderLowContrast: '#f0f1f3',
 
   //content

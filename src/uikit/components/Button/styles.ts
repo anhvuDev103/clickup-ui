@@ -1,7 +1,7 @@
 import { getColor } from '@uikit/utils';
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
 import styled from 'styled-components';
-import { space, variant } from 'styled-system';
+import { flexbox, space, variant } from 'styled-system';
 
 import { ButtonProps, scales, variants } from './types';
 
@@ -35,6 +35,24 @@ const buttonVariants = {
 };
 
 const scaleVariants = {
+  [scales.XXS]: {
+    height: 20,
+    borderRadius: getSpacingValue(1),
+    paddingInline: 8,
+    lineHeight: '16px',
+
+    '&:has(.Button_startIcon)': {
+      paddingLeft: '4px',
+    },
+
+    '&:has(.Button_endIcon)': {
+      paddingRight: '4px',
+    },
+
+    '&.Button_square': {
+      width: 20,
+    },
+  },
   [scales.XS]: {
     height: 24,
     borderRadius: getSpacingValue(1),
@@ -101,6 +119,12 @@ export const ButtonFrame = styled.button<ButtonProps>`
     justify-content: center;
   }
 
+  .Button_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   ${variant({ variants: buttonVariants })};
 
   ${variant({ prop: 'scale', variants: scaleVariants })};
@@ -108,4 +132,5 @@ export const ButtonFrame = styled.button<ButtonProps>`
   color: ${getColor};
 
   ${space};
+  ${flexbox};
 `;

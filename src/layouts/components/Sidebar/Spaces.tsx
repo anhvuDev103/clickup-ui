@@ -1,12 +1,14 @@
 import { Button, Flex, Text } from '@uikit';
-import { AddIcon, EllipsisIcon, SearchIcon } from '@uikit/icons';
+import { AddIcon, EllipsisIcon, EverythingIcon, SearchIcon, SpacesIcon } from '@uikit/icons';
 
 import Favorites from './Favorites';
+import SpaceItem from './SpaceItem';
+import SpaceTree from './SpaceTree';
 import { SpacesFrame } from './styles';
 
 const Spaces = () => {
   return (
-    <SpacesFrame flexDirection='column' alignItems='stretch'>
+    <SpacesFrame flexDirection='column' alignItems='stretch' justifyContent='unset' flex={1}>
       <Favorites />
 
       <Flex height={32} pl='16px' pr='12px'>
@@ -24,6 +26,13 @@ const Spaces = () => {
             <AddIcon width={16} height={16} />
           </Button>
         </Flex>
+      </Flex>
+
+      <Flex flexDirection='column' alignItems='stretch' justifyContent='unset' flex={1} px={2} pb='14px'>
+        <SpaceItem label='Everything' icon={<EverythingIcon width={18} height={18} color='contentSecondary' />} />
+        <SpaceTree />
+        <SpaceItem label='View all spaces' icon={<SpacesIcon width={18} height={18} color='contentSecondary' />} />
+        <SpaceItem label='Create Space' icon={<AddIcon width={18} height={18} color='contentSecondary' />} />
       </Flex>
     </SpacesFrame>
   );

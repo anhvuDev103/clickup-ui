@@ -1,11 +1,17 @@
-import { Flex } from '@uikit';
+import { Box, Flex } from '@uikit';
 import styled from 'styled-components';
 
-export const SidebarFrame = styled.div`
+export const SidebarFrame = styled(Flex)`
   width: 100%;
   max-width: 368px;
   background-color: ${({ theme }) => theme.colors.backgroundSubtle};
   border-right: 1px solid ${({ theme }) => theme.colors.borderDefault};
+
+  &:hover {
+    .Sidebar_sidebarToggleBtn {
+      opacity: 1;
+    }
+  }
 
   .Sidebar_head {
   }
@@ -22,9 +28,31 @@ export const SidebarFrame = styled.div`
   }
 
   .Sidebar_sidebarToggleBtn {
+    opacity: 0;
+    transition: 200ms;
+
     &:hover {
       background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
     }
+  }
+
+  .Sidebar_scrollable {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+    margin-right: 2px;
+  }
+`;
+
+const SidebarItem = styled(Flex)`
+  height: 32px;
+  border-radius: 6px;
+  padding: 6px 10px;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
+
+    cursor: pointer;
   }
 `;
 
@@ -32,19 +60,9 @@ export const NavigatorFrame = styled(Flex)`
   .Navigator_link {
     text-decoration: none;
   }
-
-  .Navigator_linkContent {
-    height: 32px;
-    border-radius: 6px;
-    padding: 6px 10px;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
-
-      cursor: pointer;
-    }
-  }
 `;
+
+export const NavigatorItem = styled(SidebarItem)``;
 
 export const FavoritesFrame = styled(Flex)`
   .Favorites_expanseBtn {
@@ -66,17 +84,7 @@ export const FavoritesFrame = styled(Flex)`
   }
 `;
 
-export const FavoriteItemFrame = styled(Flex)`
-  height: 32px;
-  border-radius: 6px;
-  padding: 6px 10px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
-
-    cursor: pointer;
-  }
-`;
+export const FavoriteItemFrame = styled(SidebarItem)``;
 
 export const SpacesFrame = styled(Flex)`
   .Spaces_actionBtn.text {
@@ -84,6 +92,80 @@ export const SpacesFrame = styled(Flex)`
       background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
 
       cursor: pointer;
+    }
+  }
+`;
+
+export const SpaceItemFrame = styled(SidebarItem)`
+  &:hover {
+    .SpaceNode_expandBtn {
+      display: inline-block;
+    }
+
+    .SpaceNode_icon {
+      display: none;
+    }
+  }
+
+  &.SpaceNode_opened {
+    .SpaceNode_expandBtn {
+      svg {
+        rotate: 90deg;
+      }
+    }
+  }
+
+  .SpaceNode_expandBtn {
+    display: none;
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundOnSubtleHover};
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+
+    svg {
+      transition: 200ms;
+    }
+  }
+
+  .SpaceNode_icon {
+  }
+
+  .SpaceNode_listBtn {
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundOnSubtleHover};
+    }
+
+    &:active {
+      background-color: transparent;
+    }
+  }
+`;
+
+export const SpaceTreeFrame = styled(Box)`
+  [role='tree'] {
+    height: fit-content !important;
+
+    & > div {
+      height: fit-content !important;
+    }
+  }
+`;
+
+export const SidebarFooterFrame = styled(Flex)`
+  /* position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+
+  border-top: 1px solid ${({ theme }) => theme.colors.borderDefault};
+
+  .SidebarFooter_actionBtn {
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundOnMainHover};
     }
   }
 `;

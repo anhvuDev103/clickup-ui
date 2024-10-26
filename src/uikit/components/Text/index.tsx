@@ -1,6 +1,6 @@
 import { getColor, getFontFamily } from '@uikit/utils';
 import styled from 'styled-components';
-import { layout, space, typography, variant } from 'styled-system';
+import { layout, lineHeight, space, typography, variant } from 'styled-system';
 
 import { TextProps, variants } from './types';
 
@@ -29,21 +29,25 @@ const styleVariants = {
     fontSize: 14,
     fontWeight: 400,
     color: 'contentDefault',
+    lineHeight: '16px',
   },
   [variants.MEDIUM14]: {
     fontSize: 14,
     fontWeight: 500,
     color: 'contentDefault',
+    lineHeight: '16px',
   },
   [variants.SEMI14]: {
     fontSize: 14,
     fontWeight: 600,
     color: 'contentDefault',
+    lineHeight: '16px',
   },
   [variants.BOLD14]: {
     fontSize: 14,
     fontWeight: 700,
     color: 'contentDefault',
+    lineHeight: '16px',
   },
   [variants.REGULAR16]: {
     fontSize: 16,

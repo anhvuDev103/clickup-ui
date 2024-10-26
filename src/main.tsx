@@ -1,4 +1,3 @@
-import './index.css';
 import 'normalize.css';
 
 import { StrictMode } from 'react';

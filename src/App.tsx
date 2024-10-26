@@ -1,13 +1,12 @@
 import { ROUTES } from '@configs/app/routes';
 import MainLayout from '@layouts/MainLayout';
 import StyleProvider from '@providers/StyleProvider';
-import { AppFrame } from '@styles';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <StyleProvider>
-      <AppFrame>
+      <>
         <Routes>
           {ROUTES.map((route) => {
             const Page = route.component;
@@ -24,8 +23,10 @@ function App() {
               />
             );
           })}
+
+          <Route path='*' element={<Navigate to='/home' replace />} />
         </Routes>
-      </AppFrame>
+      </>
     </StyleProvider>
   );
 }

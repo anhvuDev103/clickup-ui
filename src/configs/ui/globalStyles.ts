@@ -75,8 +75,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     /*
-        9. Create a root stacking context
-      */
+      9. Create a root stacking context
+    */
     #root,
     #__next {
       isolation: isolate;
@@ -89,5 +89,21 @@ export const GlobalStyles = createGlobalStyle`
       &:hover {
         cursor: pointer;
       }
+    }
+
+    /* Style scrollbar */
+    /* width */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background-color: ${({ theme }) => theme.colors.borderHover};
     }
 `;
