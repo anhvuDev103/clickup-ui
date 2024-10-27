@@ -1,6 +1,6 @@
 import { getColor, getFontFamily } from '@uikit/utils';
 import styled from 'styled-components';
-import { layout, lineHeight, space, typography, variant } from 'styled-system';
+import { layout, space, typography, variant } from 'styled-system';
 
 import { TextProps, variants } from './types';
 
@@ -78,7 +78,7 @@ const Text = styled.div<TextProps>`
 
   font-family: ${getFontFamily};
   color: ${getColor};
-  line-height: 16px;
+  line-height: 140%;
 
   user-select: none;
 
@@ -89,6 +89,7 @@ const Text = styled.div<TextProps>`
 
 Text.defaultProps = {
   variant: variants.REGULAR12,
+  color: 'contentDefault',
 };
 
 export default Text;

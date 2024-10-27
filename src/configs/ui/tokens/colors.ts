@@ -33,6 +33,8 @@ export const lightColors = {
   contentDisabled: '#adb3bd',
   contentOnDarkDisabled: '#ffffff80',
   contentButton: '#4f5762',
+  contentIcon: '#b9bec7',
+  contentError: '#e04f44',
 };
 
 export const darkColors = {

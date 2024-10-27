@@ -8,6 +8,8 @@ export const scales = {
   XS: 'xs',
   SM: 'sm',
   MD: 'md',
+  LG: 'lg',
+  XL: 'xl',
 } as const;
 
 export const variants = {

@@ -23,6 +23,8 @@ const Button: React.FC<ButtonProps> = ({
       [scales.XS]: 'medium12',
       [scales.SM]: 'medium14',
       [scales.MD]: 'medium14',
+      [scales.LG]: 'medium14',
+      [scales.XL]: 'bold14',
     }[scale] as TextVariant);
 
   const textColor =

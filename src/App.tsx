@@ -7,6 +7,7 @@ function App() {
   return (
     <ProvidersTree>
       {ROUTES.map((route) => {
+        const Layout = route.layout || MainLayout;
         const Page = route.component;
 
         return (
@@ -14,9 +15,9 @@ function App() {
             key={route.path}
             path={route.path}
             element={
-              <MainLayout>
+              <Layout>
                 <Page />
-              </MainLayout>
+              </Layout>
             }
           />
         );

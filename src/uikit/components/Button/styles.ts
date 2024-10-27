@@ -1,7 +1,7 @@
 import { getColor } from '@uikit/utils';
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
 import styled from 'styled-components';
-import { flexbox, space, variant } from 'styled-system';
+import { color, flexbox, space, variant } from 'styled-system';
 
 import { ButtonProps, scales, variants } from './types';
 
@@ -39,7 +39,6 @@ const scaleVariants = {
     height: 20,
     borderRadius: getSpacingValue(1),
     paddingInline: 8,
-    lineHeight: '16px',
 
     '&:has(.Button_startIcon)': {
       paddingLeft: '4px',
@@ -52,12 +51,15 @@ const scaleVariants = {
     '&.Button_square': {
       width: 20,
     },
+
+    '.Button_label': {
+      lineHeight: '16px',
+    },
   },
   [scales.XS]: {
     height: 24,
     borderRadius: getSpacingValue(1),
     paddingInline: 8,
-    lineHeight: '16px',
 
     '&:has(.Button_startIcon)': {
       paddingLeft: '4px',
@@ -70,12 +72,15 @@ const scaleVariants = {
     '&.Button_square': {
       width: 24,
     },
+
+    '.Button_label': {
+      lineHeight: '16px',
+    },
   },
   [scales.SM]: {
     height: 28,
     borderRadius: getSpacingValue(1.5),
     paddingInline: 10,
-    lineHeight: '13px',
 
     '&:has(.Button_startIcon)': {
       paddingLeft: 2,
@@ -88,12 +93,15 @@ const scaleVariants = {
     '&.Button_square': {
       width: 28,
     },
+
+    '.Button_label': {
+      lineHeight: '13px',
+    },
   },
   [scales.MD]: {
     height: 32,
     borderRadius: getSpacingValue(1.5),
     paddingInline: 11,
-    lineHeight: 1.1428571429,
 
     '&:has(.Button_startIcon)': {
       paddingLeft: '9px',
@@ -106,12 +114,61 @@ const scaleVariants = {
     '&.Button_square': {
       width: 32,
     },
+
+    '.Button_label': {
+      lineHeight: 1.1428571429,
+    },
+  },
+  [scales.LG]: {
+    height: 40,
+    borderRadius: getSpacingValue(2.25),
+    paddingInline: 20,
+
+    '&:has(.Button_startIcon)': {
+      paddingLeft: '16px',
+    },
+
+    '&:has(.Button_endIcon)': {
+      paddingRight: '16px',
+    },
+
+    '&.Button_square': {
+      width: 40,
+    },
+
+    '.Button_label': {
+      lineHeight: 1,
+      letterSpacing: '0.4px',
+    },
+  },
+  [scales.XL]: {
+    height: 50,
+    borderRadius: getSpacingValue(2.25),
+    paddingInline: 20,
+
+    '&:has(.Button_startIcon)': {
+      paddingLeft: '16px',
+    },
+
+    '&:has(.Button_endIcon)': {
+      paddingRight: '16px',
+    },
+
+    '&.Button_square': {
+      width: 50,
+    },
+
+    '.Button_label': {
+      lineHeight: 1,
+      letterSpacing: '0.4px',
+    },
   },
 };
 
 export const ButtonFrame = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 4px;
 
   &.Button_square {

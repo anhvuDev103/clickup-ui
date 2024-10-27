@@ -1,11 +1,17 @@
 import axios, { AxiosInstance, AxiosRequestHeaders } from 'axios';
 
+export interface ApiReponse<T = undefined> {
+  message: string;
+  status: string;
+  result: T;
+}
+
 class Http {
   readonly instance: AxiosInstance;
 
   constructor() {
     this.instance = axios.create({
-      baseURL: import.meta.env.API_ENDPOINT,
+      baseURL: import.meta.env.VITE_API_ENDPOINT,
       timeout: 10000,
       headers: { 'Content-Type': 'application/json' },
     });

@@ -7,8 +7,8 @@ import { NavigatorFrame, NavigatorItem } from './styles';
 const Navigator = () => {
   return (
     <NavigatorFrame flexDirection='column' alignItems='stretch' mt={2} gap='2px'>
-      {ROUTES.map((route) => {
-        const Icon = route.icon;
+      {ROUTES.filter((route) => route.navigation).map((route) => {
+        const Icon = route.icon!;
 
         return (
           <NavLink to={route.path} className='Navigator_link'>
