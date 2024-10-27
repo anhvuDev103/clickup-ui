@@ -9,4 +9,8 @@ export const LoginFrame = styled(Flex)`
   .Login_form {
     width: 100%;
   }
+
+  input[type='password']:not(:placeholder-shown) {
+    padding-top: 3px;
+  }
 `;

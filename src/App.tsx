@@ -1,9 +1,22 @@
 import { ROUTES } from '@configs/app/routes';
 import MainLayout from '@layouts/MainLayout';
 import ProvidersTree from '@providers/ProvidersTree';
-import { Navigate, Route } from 'react-router-dom';
+import { useRootStore } from '@stores/root';
+import { useEffect } from 'react';
+import { Navigate, Route, useNavigate } from 'react-router-dom';
 
 function App() {
+  const navigate = useNavigate();
+  const { isSignedIn } = useRootStore();
+
+  useEffect(() => {
+    if (isSignedIn) {
+      navigate('/home');
+    } else {
+      navigate('/login');
+    }
+  }, [isSignedIn, navigate]);
+
   return (
     <ProvidersTree>
       {ROUTES.map((route) => {

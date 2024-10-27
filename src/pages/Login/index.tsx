@@ -1,24 +1,40 @@
-import useLoginForm from '@hooks/auth/useLoginForm';
-import { Button, Flex, Paper, Text } from '@uikit';
+import useLoginForm, { SignInSchema } from '@hooks/auth/useLoginForm';
+import useSharedServicesProvider from '@hooks/useSharedServicesProvider';
+import { useRootStore } from '@stores/root';
+import { Button, Flex, Paper, Spinner, Text } from '@uikit';
 import Input from '@uikit/components/Input';
 import { EmailIcon, PasswordIcon } from '@uikit/icons';
+import { useState } from 'react';
+import { SubmitHandler } from 'react-hook-form';
 
 import { LoginFrame } from './styles';
 
 const Login = () => {
-  const [
-    {
-      handleSubmit,
-      register,
-      formState: { errors },
-    },
-    onSubmit,
-  ] = useLoginForm();
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const { setIsSignedIn } = useRootStore();
+  const { authService } = useSharedServicesProvider();
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useLoginForm();
+
+  const signIn: SubmitHandler<SignInSchema> = async (data) => {
+    try {
+      setIsSigningIn(true);
+      await authService?.signIn(data);
+      setIsSignedIn(true);
+    } catch (error) {
+      console.error('Login failed', error);
+    } finally {
+      setIsSigningIn(false);
+    }
+  };
 
   return (
     <LoginFrame justifyContent='center'>
       <Paper width='100%' maxWidth='480px' px={60} py={30} borderRadius={12} className='Login_formModal'>
-        <form onSubmit={handleSubmit(onSubmit)} className='Login_form'>
+        <form onSubmit={handleSubmit(signIn)} className='Login_form'>
           <Flex width='100%' flexDirection='column' alignItems='stretch'>
             <Text fontSize='32px' fontWeight={800} lineHeight={1.5} textAlign='center' mb={20}>
               Welcome back!
@@ -40,11 +56,12 @@ const Login = () => {
               error={errors.password?.message}
               inputProps={{
                 placeholder: 'Enter password',
+                type: 'password',
                 ...register('password', { required: true }),
               }}
               mb={26}
             />
-            <Button scale='xl'>Log In</Button>
+            <Button scale='xl'>{isSigningIn ? <Spinner /> : 'Log In'}</Button>
           </Flex>
         </form>
       </Paper>

@@ -1,13 +1,14 @@
+import { LocalStorageKey } from '@constants/localStorage';
+import { jwtDecode } from 'jwt-decode';
 import _ from 'lodash';
 import { StateCreator } from 'zustand';
 
 import { RootStore } from './root';
 
 export interface AuthSlice {
-  accessToken: string;
-  refreshToken: string;
+  isSignedIn: boolean;
 
-  setTokens: (payload: { accessToken: string; refreshToken: string }) => void;
+  setIsSignedIn: (signedIn: boolean) => void;
 }
 
 export const createAuthSlice: StateCreator<
@@ -16,14 +17,23 @@ export const createAuthSlice: StateCreator<
   [],
   AuthSlice
 > = (set) => {
-  return {
-    accessToken: '',
-    refreshToken: '',
+  let isSignedIn = false;
 
-    setTokens({ accessToken, refreshToken }) {
+  const now = Math.floor(new Date().getTime() / 1000);
+  const accessToken = localStorage.getItem(LocalStorageKey.AccessToken);
+
+  if (accessToken) {
+    const decodedToken = jwtDecode(accessToken!);
+
+    isSignedIn = decodedToken.exp! > now;
+  }
+
+  return {
+    isSignedIn,
+
+    setIsSignedIn(signedIn) {
       set({
-        accessToken,
-        refreshToken,
+        isSignedIn: signedIn,
       });
     },
   };
