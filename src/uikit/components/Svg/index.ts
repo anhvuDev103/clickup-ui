@@ -1,5 +1,6 @@
 export { default as AddIcon } from './Add';
 export { default as AddCircleIcon } from './AddCircle';
+export { default as AddReactIcon } from './AddReact';
 export { default as CameraIcon } from './Camera';
 export { default as CaretIcon } from './Caret';
 export { default as ChartSquareIcon } from './ChartSquare';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { layout, variant } from 'styled-system';
+import { boxShadow, layout, variant } from 'styled-system';
 
 import { Flex } from '../Box';
 import { PaperProps, scales, variants } from './types';
@@ -27,6 +27,7 @@ const Paper = styled(Flex)<PaperProps>`
   })}
 
   ${layout}
+  ${boxShadow}
 `;
 
 Paper.defaultProps = {

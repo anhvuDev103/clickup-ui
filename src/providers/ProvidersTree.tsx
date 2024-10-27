@@ -37,8 +37,8 @@ const ProvidersTree = buildProvidersTree([
     },
   ],
   [StyleProvider],
-  [AppDataProvider],
   [SharedServicesProvider],
+  [AppDataProvider],
   [Routes],
 ]);
 

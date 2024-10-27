@@ -1,4 +1,5 @@
 import useUserSummary from '@hooks/users/useUserSummary';
+import { GetProfileResponse, GetProfileResult } from '@schemas/responses/users';
 import { createContext } from 'react';
 
 interface Props {
@@ -6,20 +7,20 @@ interface Props {
 }
 
 interface AppData {
-  user: null;
+  user: GetProfileResult | undefined;
 }
 
 export const Context = createContext<AppData>({
-  user: null,
+  user: undefined,
 });
 
 const AppDataProvider: React.FC<Props> = ({ children }) => {
-  // const { data: userSummary, isLoading: isUserSummaryLoading } = useUserSummary();
+  const { data: userSummary, isLoading: isUserSummaryLoading } = useUserSummary();
 
   return (
     <Context.Provider
       value={{
-        user: null,
+        user: userSummary,
       }}
     >
       {children}
