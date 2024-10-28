@@ -32,6 +32,7 @@ export interface ButtonProps
   color?: Color;
   textVariant?: TextVariant;
 
+  label?: string;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
 

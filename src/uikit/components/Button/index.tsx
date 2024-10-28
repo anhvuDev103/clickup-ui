@@ -1,5 +1,7 @@
 import classNames from 'classnames';
 
+import { Flex } from '../Box';
+import Popover from '../Popover';
 import Text from '../Text';
 import { Variant as TextVariant } from '../Text/types';
 import { ButtonFrame } from './styles';
@@ -14,6 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   square,
   className,
   textVariant: _textVariant,
+  label,
   ...props
 }) => {
   const textVariant =
@@ -35,7 +38,7 @@ const Button: React.FC<ButtonProps> = ({
       [variants.TEXT]: 'contentTertiary',
     }[variant];
 
-  return (
+  const button = (
     <ButtonFrame
       scale={scale}
       variant={variant}
@@ -50,6 +53,18 @@ const Button: React.FC<ButtonProps> = ({
 
       {endIcon && <div className='Button_endIcon'>{endIcon}</div>}
     </ButtonFrame>
+  );
+
+  if (!label) return button;
+
+  return (
+    <Popover interactive={false} trigger='mouseenter focus' handler={button} delay={[500, 0]}>
+      <Flex backgroundColor='backgroundTooltip' px={3} py={2} borderRadius={8}>
+        <Text variant='medium12' color='contentOnDark'>
+          {label}
+        </Text>
+      </Flex>
+    </Popover>
   );
 };
 

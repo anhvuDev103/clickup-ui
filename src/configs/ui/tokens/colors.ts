@@ -16,6 +16,7 @@ export const lightColors = {
   backgroundAvatarSpace: '#b2e0e0',
   backgroundOnMainHover: '#e8eaed',
   backgroundOnSubtleHover: '#d6d9de',
+  backgroundTooltip: '#000000',
 
   //border
   borderDefault: '#e8eaed',
