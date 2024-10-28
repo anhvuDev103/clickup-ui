@@ -32,4 +32,14 @@ export const ProfileSettingsHandler = styled(Flex)`
 
     cursor: pointer;
   }
+
+  &.ProfileSettings_visible {
+    .ProfileSettings_arrowIcon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ProfileSettings_arrowIcon {
+    transition: 200ms;
+  }
 `;

@@ -4,7 +4,7 @@ import Popover from '../Popover';
 import { DropdownMenuItemFrame } from './styles';
 import { DropdownMenuSubProps } from './types';
 
-const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ children }) => {
+const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ children, ...props }) => {
   const trigger = Children.toArray(children).find(
     (child) => isValidElement(child) && typeof child.type !== 'string' && child.type.name === 'DropdownMenuSubTrigger',
   ) as React.ReactNode;
@@ -19,6 +19,7 @@ const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ children }) => {
       handler={<DropdownMenuItemFrame width='100%'>{trigger}</DropdownMenuItemFrame>}
       paperProps={{
         py: 2,
+        ...props,
       }}
     >
       {items}

@@ -1,4 +1,5 @@
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { background, border, color, flexbox, layout, position, space } from 'styled-system';
 
@@ -27,5 +28,21 @@ export const Flex = styled(Box)<FlexProps>`
 
   gap: ${getGap};
 
+  ${flexbox};
+`;
+
+export const MotionFlex = styled(motion.div)<FlexProps>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: ${getGap};
+
+  ${background}
+  ${border}
+  ${layout}
+  ${position}
+  ${space}
+  ${color}
   ${flexbox};
 `;

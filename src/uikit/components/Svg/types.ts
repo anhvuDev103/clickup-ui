@@ -1,6 +1,6 @@
-import { ColorTokens } from '@configs/ui/tokens/types';
+import { Color } from '@vite-env';
 import { SpaceProps } from 'styled-system';
 
 export interface SvgProps extends Omit<React.SVGProps<SVGSVGElement>, 'color'>, SpaceProps {
-  color?: keyof ColorTokens['colors'];
+  color?: Color;
 }

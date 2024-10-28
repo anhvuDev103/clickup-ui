@@ -1,5 +1,6 @@
 import { ColorTokens } from '@configs/ui/tokens/types';
 import { FlexProps } from '@uikit/types';
+import { Color } from '@vite-env';
 import { BoxShadowProps, LayoutProps } from 'styled-system';
 
 export const variants = {
@@ -18,5 +19,5 @@ export type Scale = (typeof scales)[keyof typeof scales];
 export interface PaperProps extends FlexProps, LayoutProps, BoxShadowProps {
   variant?: Variant;
   scale?: Scale;
-  color?: keyof ColorTokens['colors'] | (string & {});
+  color?: Color;
 }

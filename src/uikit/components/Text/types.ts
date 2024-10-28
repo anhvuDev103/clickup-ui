@@ -1,5 +1,6 @@
 import { Theme } from '@configs/ui/tokens';
 import { ColorTokens } from '@configs/ui/tokens/types';
+import { Color } from '@vite-env';
 import { LayoutProps, SpaceProps, TypographyProps } from 'styled-system';
 
 export const variants = {
@@ -23,5 +24,5 @@ export type Font = keyof Theme['fonts'];
 export interface TextProps extends SpaceProps, TypographyProps, LayoutProps {
   variant?: Variant;
   font?: Font;
-  color?: keyof ColorTokens['colors'] | (string & {});
+  color?: Color;
 }

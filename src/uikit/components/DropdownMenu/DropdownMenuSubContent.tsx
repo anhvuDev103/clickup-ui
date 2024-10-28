@@ -3,7 +3,7 @@ import { DropdownMenuSubContentProps } from './types';
 
 const DropdownMenuSubContent: React.FC<DropdownMenuSubContentProps> = ({ children, ...props }) => {
   return (
-    <DropdownMenuGroup px={0} {...props}>
+    <DropdownMenuGroup px={2} {...props}>
       {children}
     </DropdownMenuGroup>
   );

@@ -8,11 +8,12 @@ const DropdownMenuGroup: React.FC<DropdownMenuGroupProps> = ({ children, label, 
       {label && (
         <Text
           variant='medium12'
-          px='16px'
           letterSpacing={0.55}
           lineHeight='11px'
-          py={2}
+          p={2}
           color='contentDropdownListTitle'
+          width='100%'
+          textAlign='left'
         >
           {label}
         </Text>

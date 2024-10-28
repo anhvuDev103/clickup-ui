@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { boxShadow, layout, variant } from 'styled-system';
 
-import { Flex } from '../Box';
+import { Flex, MotionFlex } from '../Box';
 import { PaperProps, scales, variants } from './types';
 
 const styleVariants = {
@@ -16,7 +16,7 @@ const scaleVariants = {
   [scales.MD]: {},
 };
 
-const Paper = styled(Flex)<PaperProps>`
+export const Paper = styled(Flex)<PaperProps>`
   ${variant({
     variants: styleVariants,
   })}
@@ -35,4 +35,21 @@ Paper.defaultProps = {
   scale: scales.MD,
 };
 
-export default Paper;
+export const MotionPaper = styled(MotionFlex)<PaperProps>`
+  ${variant({
+    variants: styleVariants,
+  })}
+
+  ${variant({
+    prop: 'scale',
+    variants: scaleVariants,
+  })}
+
+  ${layout}
+  ${boxShadow}
+`;
+
+MotionPaper.defaultProps = {
+  variant: variants.CONTAINED,
+  scale: scales.MD,
+};

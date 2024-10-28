@@ -1,5 +1,5 @@
 import useUserSummary from '@hooks/users/useUserSummary';
-import { GetProfileResponse, GetProfileResult } from '@schemas/responses/users';
+import { GetProfileResult } from '@schemas/responses/users';
 import { createContext } from 'react';
 
 interface Props {

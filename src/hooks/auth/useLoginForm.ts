@@ -16,8 +16,8 @@ export type SignInSchema = z.infer<typeof schema>;
 const useLoginForm = (): UseFormReturn<SignInSchema> => {
   return useForm<SignInSchema>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'ducanh2@gmail.com',
+      password: 'Chainuocngot123!',
     },
     mode: 'onTouched',
     resolver: zodResolver(schema),

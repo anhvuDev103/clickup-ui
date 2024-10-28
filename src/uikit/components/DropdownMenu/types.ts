@@ -1,5 +1,7 @@
 import { FlexProps } from '@uikit/types';
 
+import { PaperProps } from '../Paper/types';
+
 export interface DropdownMenuRootProps extends FlexProps {
   children: React.ReactNode;
 }
@@ -14,7 +16,7 @@ export interface DropdownMenuItemProps extends FlexProps {
   startIcon?: React.ReactNode;
 }
 
-export interface DropdownMenuSubProps {
+export interface DropdownMenuSubProps extends PaperProps {
   children: React.ReactNode;
 }
 

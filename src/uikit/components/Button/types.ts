@@ -1,4 +1,4 @@
-import { ColorTokens } from '@configs/ui/tokens/types';
+import { Color } from '@vite-env';
 import { FlexboxProps, LayoutProps, SpaceProps } from 'styled-system';
 
 import { Variant as TextVariant } from '../Text/types';
@@ -29,7 +29,7 @@ export interface ButtonProps
   scale?: Scale;
   variant?: Variant;
   square?: boolean;
-  color?: keyof ColorTokens['colors'] | (string & {});
+  color?: Color;
   textVariant?: TextVariant;
 
   startIcon?: React.ReactNode;

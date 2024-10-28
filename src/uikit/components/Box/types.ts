@@ -17,6 +17,6 @@ export interface BoxProps
     SpaceProps,
     ColorProps<Theme> {}
 
-export interface FlexProps extends BoxProps, FlexboxProps {
+export interface FlexProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>, BoxProps, FlexboxProps {
   gap?: number | `${number}px`;
 }
