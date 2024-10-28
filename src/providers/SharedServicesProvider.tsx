@@ -6,12 +6,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface SharedServices {
+interface SharedServicesContext {
   authService: AuthService | null;
   usersService: UsersService | null;
 }
 
-export const Context = createContext<SharedServices>({
+export const Context = createContext<SharedServicesContext>({
   authService: null,
   usersService: null,
 });

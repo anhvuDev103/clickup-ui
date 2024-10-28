@@ -6,11 +6,11 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface AppData {
+interface AppDataContext {
   user: GetProfileResult | undefined;
 }
 
-export const Context = createContext<AppData>({
+export const Context = createContext<AppDataContext>({
   user: undefined,
 });
 

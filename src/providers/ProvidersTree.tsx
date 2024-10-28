@@ -2,6 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Routes } from 'react-router-dom';
 
 import AppDataProvider from './AppDataProvider';
+import ModalProvider from './ModalProvider';
 import SharedServicesProvider from './SharedServicesProvider';
 import StyleProvider from './StyleProvider';
 
@@ -39,6 +40,7 @@ const ProvidersTree = buildProvidersTree([
   [StyleProvider],
   [SharedServicesProvider],
   [AppDataProvider],
+  [ModalProvider],
   [Routes],
 ]);
 
