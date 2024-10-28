@@ -12,4 +12,10 @@ export const DropdownMenuItemFrame = styled(Flex)`
 
     cursor: pointer;
   }
+
+  .DropdownMenuSubTrigger_arrowIcon {
+    transform: rotate(-90deg);
+  }
 `;
+
+export const DropdownMenuSubTriggerFrame = styled(Flex)``;

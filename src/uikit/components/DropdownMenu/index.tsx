@@ -7,8 +7,12 @@ import DropdownMenuSubContent from './DropdownMenuSubContent';
 import DropdownMenuSubTrigger from './DropdownMenuSubTrigger';
 import { DropdownMenuRootProps } from './types';
 
-const DropdownMenuRoot: React.FC<DropdownMenuRootProps> = ({ children }) => {
-  return <Flex flexDirection='column'>{children}</Flex>;
+const DropdownMenuRoot: React.FC<DropdownMenuRootProps> = ({ children, ...props }) => {
+  return (
+    <Flex flexDirection='column' {...props}>
+      {children}
+    </Flex>
+  );
 };
 
 const DropdownMenu = {

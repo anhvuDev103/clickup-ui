@@ -35,6 +35,10 @@ export const lightColors = {
   contentButton: '#4f5762',
   contentIcon: '#b9bec7',
   contentError: '#e04f44',
+  contentDropdownListTitle: '#87909e',
+
+  //icon
+  iconFill: '#656f7d',
 };
 
 export const darkColors = {

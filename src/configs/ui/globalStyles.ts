@@ -105,5 +105,7 @@ export const GlobalStyles = createGlobalStyle`
     /* Handle */
     ::-webkit-scrollbar-thumb {
       background-color: ${({ theme }) => theme.colors.borderHover};
+      border-radius: 24px;
     }
+
 `;

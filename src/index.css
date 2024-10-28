@@ -1,0 +1,3 @@
+[data-tippy-root] > div {
+  max-height: calc(100vh - 55px);
+}

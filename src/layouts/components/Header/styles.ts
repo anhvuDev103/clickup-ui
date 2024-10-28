@@ -8,7 +8,13 @@ export const HeaderFrame = styled(Flex)<FlexProps>`
   padding: 4px 8px;
 `;
 
-export const ProfileSettingsFrame = styled(Popover)`
+export const ProfileSettingsFrame = styled(Popover)``;
+
+export const ProfileSettingsPaper = styled(Flex)`
+  max-height: 100%;
+  overflow-y: auto;
+  margin-right: 2px;
+
   .ProfileSettings_addReactBtn {
     padding-inline: 6px;
   }

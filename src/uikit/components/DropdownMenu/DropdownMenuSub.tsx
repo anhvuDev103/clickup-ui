@@ -1,7 +1,7 @@
 import { Children, isValidElement } from 'react';
 
 import Popover from '../Popover';
-import DropdownMenuItem from './DropdownMenuItem';
+import { DropdownMenuItemFrame } from './styles';
 import { DropdownMenuSubProps } from './types';
 
 const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ children }) => {
@@ -14,7 +14,13 @@ const DropdownMenuSub: React.FC<DropdownMenuSubProps> = ({ children }) => {
   );
 
   return (
-    <Popover placement='auto-start' handler={<DropdownMenuItem>{trigger}</DropdownMenuItem>}>
+    <Popover
+      placement='auto-start'
+      handler={<DropdownMenuItemFrame width='100%'>{trigger}</DropdownMenuItemFrame>}
+      paperProps={{
+        py: 2,
+      }}
+    >
       {items}
     </Popover>
   );
