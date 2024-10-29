@@ -56,10 +56,6 @@ const scaleVariants = {
       width: 20,
       borderRadius: '999px',
     },
-
-    '.Button_label': {
-      lineHeight: '16px',
-    },
   },
   [scales.XS]: {
     height: 24,
@@ -81,10 +77,6 @@ const scaleVariants = {
     '&.Button_circle': {
       width: 24,
       borderRadius: '999px',
-    },
-
-    '.Button_label': {
-      lineHeight: '16px',
     },
   },
   [scales.SM]: {
@@ -108,10 +100,6 @@ const scaleVariants = {
       width: 28,
       borderRadius: '999px',
     },
-
-    '.Button_label': {
-      lineHeight: '13px',
-    },
   },
   [scales.MD]: {
     height: 32,
@@ -133,10 +121,6 @@ const scaleVariants = {
     '&.Button_circle': {
       width: 32,
       borderRadius: '999px',
-    },
-
-    '.Button_label': {
-      lineHeight: 1.1428571429,
     },
   },
   [scales.LG]: {
@@ -161,7 +145,6 @@ const scaleVariants = {
       borderRadius: '999px',
     },
     '.Button_label': {
-      lineHeight: 1,
       letterSpacing: '0.4px',
     },
   },
@@ -188,7 +171,6 @@ const scaleVariants = {
     },
 
     '.Button_label': {
-      lineHeight: 1,
       letterSpacing: '0.4px',
     },
   },
@@ -211,6 +193,8 @@ export const ButtonFrame = styled.button<ButtonProps>`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    line-height: 100%;
   }
 
   ${variant({ variants: buttonVariants })};
