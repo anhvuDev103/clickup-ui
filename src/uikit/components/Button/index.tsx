@@ -14,9 +14,12 @@ const Button: React.FC<ButtonProps> = ({
   startIcon,
   endIcon,
   square,
+  circle,
   className,
   textVariant: _textVariant,
   label,
+  labelPlacement,
+  backgroundColorHover,
   ...props
 }) => {
   const textVariant =
@@ -42,7 +45,8 @@ const Button: React.FC<ButtonProps> = ({
     <ButtonFrame
       scale={scale}
       variant={variant}
-      className={classNames([className, variant, { Button_square: square }])}
+      className={classNames([className, variant, { Button_square: square, Button_circle: circle }])}
+      backgroundColorHover={backgroundColorHover}
       {...props}
     >
       {startIcon && <div className='Button_startIcon'>{startIcon}</div>}
@@ -58,7 +62,13 @@ const Button: React.FC<ButtonProps> = ({
   if (!label) return button;
 
   return (
-    <Popover interactive={false} trigger='mouseenter focus' handler={button} delay={[500, 0]}>
+    <Popover
+      placement={labelPlacement}
+      interactive={false}
+      trigger='mouseenter focus'
+      handler={button}
+      delay={[500, 0]}
+    >
       <Flex backgroundColor='backgroundTooltip' px={3} py={2} borderRadius={8}>
         <Text variant='medium12' color='contentOnDark'>
           {label}

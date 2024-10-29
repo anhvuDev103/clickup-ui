@@ -1,7 +1,7 @@
 import { getColor } from '@uikit/utils';
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
-import styled from 'styled-components';
-import { color, flexbox, space, variant } from 'styled-system';
+import styled, { css } from 'styled-components';
+import { border, color, flexbox, space, variant } from 'styled-system';
 
 import { ButtonProps, scales, variants } from './types';
 
@@ -52,6 +52,11 @@ const scaleVariants = {
       width: 20,
     },
 
+    '&.Button_circle': {
+      width: 20,
+      borderRadius: '999px',
+    },
+
     '.Button_label': {
       lineHeight: '16px',
     },
@@ -71,6 +76,11 @@ const scaleVariants = {
 
     '&.Button_square': {
       width: 24,
+    },
+
+    '&.Button_circle': {
+      width: 24,
+      borderRadius: '999px',
     },
 
     '.Button_label': {
@@ -94,6 +104,11 @@ const scaleVariants = {
       width: 28,
     },
 
+    '&.Button_circle': {
+      width: 28,
+      borderRadius: '999px',
+    },
+
     '.Button_label': {
       lineHeight: '13px',
     },
@@ -113,6 +128,11 @@ const scaleVariants = {
 
     '&.Button_square': {
       width: 32,
+    },
+
+    '&.Button_circle': {
+      width: 32,
+      borderRadius: '999px',
     },
 
     '.Button_label': {
@@ -136,6 +156,10 @@ const scaleVariants = {
       width: 40,
     },
 
+    '&.Button_circle': {
+      width: 40,
+      borderRadius: '999px',
+    },
     '.Button_label': {
       lineHeight: 1,
       letterSpacing: '0.4px',
@@ -158,6 +182,11 @@ const scaleVariants = {
       width: 50,
     },
 
+    '&.Button_circle': {
+      width: 50,
+      borderRadius: '999px',
+    },
+
     '.Button_label': {
       lineHeight: 1,
       letterSpacing: '0.4px',
@@ -172,7 +201,8 @@ export const ButtonFrame = styled.button<ButtonProps>`
   gap: 4px;
   flex-shrink: 0;
 
-  &.Button_square {
+  &.Button_square,
+  &.Button_circle {
     padding: 0;
     justify-content: center;
   }
@@ -189,6 +219,16 @@ export const ButtonFrame = styled.button<ButtonProps>`
 
   color: ${getColor};
 
+  ${({ theme, backgroundColorHover }) =>
+    backgroundColorHover &&
+    css`
+      &:hover {
+        background-color: ${getColor({ theme, color: backgroundColorHover })};
+      }
+    `};
+
+  ${color};
+  ${border};
   ${space};
   ${flexbox};
 `;

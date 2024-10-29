@@ -1,5 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
-import { useSpring } from 'framer-motion';
+import { MotionValue, useSpring } from 'framer-motion';
 
 import { MotionPaper } from '../Paper';
 import { Props } from './types';
@@ -34,7 +34,8 @@ const Popover: React.FC<Props> = ({ handler, children, paperProps, ...props }) =
           boxShadow='0 1px 10px 0 rgba(0, 0, 0, .25)'
           borderRadius={6}
           tabIndex={-1}
-          style={{ scale, opacity }}
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          style={{ scale, opacity } as any}
           {...paperProps}
           {...attrs}
         >

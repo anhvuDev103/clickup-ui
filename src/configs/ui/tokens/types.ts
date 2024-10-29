@@ -6,7 +6,7 @@ import { darkColors, lightColors } from './colors';
 const _mergedColorTokens = _.merge({}, lightColors, darkColors);
 
 export interface ColorTokens {
-  colors: Record<keyof typeof _mergedColorTokens, string>;
+  colors: Record<keyof typeof _mergedColorTokens | (string & {}), string>;
 }
 
 export interface BaseTokens {

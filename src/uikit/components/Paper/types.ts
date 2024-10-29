@@ -1,4 +1,3 @@
-import { ColorTokens } from '@configs/ui/tokens/types';
 import { FlexProps } from '@uikit/types';
 import { Color } from '@vite-env';
 import { BoxShadowProps, LayoutProps } from 'styled-system';

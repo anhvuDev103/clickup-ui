@@ -1,5 +1,7 @@
+import { Theme } from '@configs/ui/tokens';
+import { Placement } from '@popperjs/core';
 import { Color } from '@vite-env';
-import { FlexboxProps, LayoutProps, SpaceProps } from 'styled-system';
+import { BorderProps, ColorProps, FlexboxProps, LayoutProps, SpaceProps } from 'styled-system';
 
 import { Variant as TextVariant } from '../Text/types';
 
@@ -23,16 +25,21 @@ type Variant = (typeof variants)[keyof typeof variants];
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    ColorProps<Theme>,
+    BorderProps<Theme>,
     SpaceProps,
     LayoutProps,
     FlexboxProps {
   scale?: Scale;
   variant?: Variant;
   square?: boolean;
+  circle?: boolean;
   color?: Color;
   textVariant?: TextVariant;
+  backgroundColorHover?: Color;
 
   label?: string;
+  labelPlacement?: Placement;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
 

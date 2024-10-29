@@ -15,6 +15,7 @@ export const lightColors = {
   backgroundOnDarkPressed: '#ffffff33',
   backgroundAvatarCutOut: '#2d4442',
   backgroundAvatarSpace: '#b2e0e0',
+  backgroundOnMain: '#f0f1f3',
   backgroundOnMainHover: '#e8eaed',
   backgroundOnSubtleHover: '#d6d9de',
   backgroundPrimaryOnSubtle: '#e0f4ec',
@@ -22,6 +23,7 @@ export const lightColors = {
 
   //border
   borderDefault: '#e8eaed',
+  borderPrimary: '#3db88b',
   borderHover: '#adb3bd',
   borderLowContrast: '#f0f1f3',
 
