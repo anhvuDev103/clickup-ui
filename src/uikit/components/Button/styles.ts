@@ -29,7 +29,7 @@ const buttonVariants = {
     color: 'contentTertiary',
 
     '&:hover': {
-      backgroundColor: 'backgroundOnDarkHover',
+      backgroundColor: 'backgroundHover',
     },
   },
 };

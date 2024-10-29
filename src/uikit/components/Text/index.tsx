@@ -72,13 +72,13 @@ const styleVariants = {
 };
 
 const Text = styled.div<TextProps>`
+  line-height: 140%;
   ${variant({
     variants: styleVariants,
   })};
 
   font-family: ${getFontFamily};
   color: ${getColor};
-  line-height: 140%;
 
   user-select: none;
 

@@ -43,3 +43,10 @@ export const ProfileSettingsHandler = styled(Flex)`
     transition: 200ms;
   }
 `;
+export const ActionsFrame = styled(Flex)`
+  button.text {
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundOnDarkHover};
+    }
+  }
+`;

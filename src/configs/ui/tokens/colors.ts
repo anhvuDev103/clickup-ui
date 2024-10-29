@@ -11,6 +11,7 @@ export const lightColors = {
   backgroundPrimaryActive: '#36866c',
   backgroundPrimaryDisabled: '#c1e8da',
   backgroundButtonHover: '#f0f1f3',
+  backgroundHover: '#f0f1f3',
   backgroundOnDarkPressed: '#ffffff33',
   backgroundAvatarCutOut: '#2d4442',
   backgroundAvatarSpace: '#b2e0e0',

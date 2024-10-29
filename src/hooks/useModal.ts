@@ -1,4 +1,4 @@
-import { Context } from '@providers/ModalProvider';
+import { ModalContext as Context } from '@providers/contexts';
 import { useContext } from 'react';
 
 const useModal = () => {

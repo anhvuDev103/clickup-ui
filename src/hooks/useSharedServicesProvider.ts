@@ -1,4 +1,4 @@
-import { Context } from '@providers/SharedServicesProvider';
+import { SharedServicesContext as Context } from '@providers/contexts';
 import { useContext } from 'react';
 
 const useSharedServicesProvider = () => {

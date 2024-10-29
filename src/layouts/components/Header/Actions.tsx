@@ -13,10 +13,11 @@ import {
 import { FlexProps } from '@uikit/types';
 
 import ProfileSettings from './ProfileSettings';
+import { ActionsFrame } from './styles';
 
 const Actions: React.FC<FlexProps> = (props) => {
   return (
-    <Flex justifyContent='flex-end' {...props}>
+    <ActionsFrame justifyContent='flex-end' {...props}>
       <Button
         mr={1}
         variant='text'
@@ -48,7 +49,7 @@ const Actions: React.FC<FlexProps> = (props) => {
         </Button>
       </Flex>
       <ProfileSettings />
-    </Flex>
+    </ActionsFrame>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Context } from '@providers/AppDataProvider';
+import { AppDataContext as Context } from '@providers/contexts';
 import { useContext } from 'react';
 
 const useAppDataProvider = () => {
