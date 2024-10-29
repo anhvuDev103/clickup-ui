@@ -108,4 +108,7 @@ export const GlobalStyles = createGlobalStyle`
       border-radius: 24px;
     }
 
+    a {
+      text-decoration: none;
+    }
 `;

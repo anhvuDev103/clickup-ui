@@ -3,8 +3,9 @@ import { Box, Button, Flex, Text } from '@uikit';
 import { CaretIcon, FolderIcon, FolderOpenIcon, ListIcon } from '@uikit/icons';
 import classNames from 'classnames';
 import { NodeRendererProps } from 'react-arborist';
+import { NavLink } from 'react-router-dom';
 
-import { SpaceItemFrame } from './styles';
+import { SpaceNodeFrame } from './styles';
 import { SpaceNodeData } from './types';
 
 const SpaceNode: React.FC<NodeRendererProps<SpaceNodeData>> = ({ node, style, dragHandle }) => {
@@ -14,6 +15,7 @@ const SpaceNode: React.FC<NodeRendererProps<SpaceNodeData>> = ({ node, style, dr
   const isOpen = node.isOpen;
 
   const onExpandBtnClicked = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     e.stopPropagation();
     if (isOpen) {
       node.close();
@@ -23,13 +25,13 @@ const SpaceNode: React.FC<NodeRendererProps<SpaceNodeData>> = ({ node, style, dr
   };
 
   return (
-    <SpaceItemFrame
+    <SpaceNodeFrame
       style={isSpace ? {} : style}
       ref={dragHandle}
       onClick={() => node.open()}
       className={classNames({ SpaceNode_opened: isOpen })}
     >
-      <Flex justifyContent='flex-start' gap='10px'>
+      <Flex justifyContent='flex-start' gap='10px' width='100%' height='100%'>
         {(isSpace || isFolder) && (
           <>
             <Button variant='text' scale='xxs' square className='SpaceNode_expandBtn' onClick={onExpandBtnClicked}>
@@ -40,9 +42,9 @@ const SpaceNode: React.FC<NodeRendererProps<SpaceNodeData>> = ({ node, style, dr
               {isFolder && (
                 <>
                   {isOpen ? (
-                    <FolderOpenIcon width={20} height={20} color='contentSecondary' />
+                    <FolderOpenIcon width={18} height={18} color='contentSecondary' />
                   ) : (
-                    <FolderIcon width={20} height={20} color='contentSecondary' />
+                    <FolderIcon width={18} height={18} color='contentSecondary' />
                   )}
                 </>
               )}
@@ -55,11 +57,13 @@ const SpaceNode: React.FC<NodeRendererProps<SpaceNodeData>> = ({ node, style, dr
             <ListIcon width={18} height={18} color='contentSecondary' />
           </Button>
         )}
-        <Text variant='regular14' lineHeight='unset'>
-          {node.data.name}
-        </Text>
+        <NavLink to={`/${node.id}`}>
+          <Text variant='regular14' lineHeight='unset'>
+            {node.data.name}
+          </Text>
+        </NavLink>
       </Flex>
-    </SpaceItemFrame>
+    </SpaceNodeFrame>
   );
 };
 

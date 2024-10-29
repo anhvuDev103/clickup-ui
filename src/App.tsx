@@ -15,7 +15,9 @@ function App() {
     } else {
       navigate('/login');
     }
-  }, [isSignedIn, navigate]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSignedIn]);
 
   return (
     <ProvidersTree>

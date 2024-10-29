@@ -170,6 +170,7 @@ export const ButtonFrame = styled.button<ButtonProps>`
   align-items: center;
   justify-content: center;
   gap: 4px;
+  flex-shrink: 0;
 
   &.Button_square {
     padding: 0;

@@ -2,6 +2,7 @@ import AuthLayout from '@layouts/AuthLayout';
 import Clips from '@pages/Clips';
 import Dashboards from '@pages/Dashboards';
 import Docs from '@pages/Docs';
+import Everything from '@pages/Everything';
 import Home from '@pages/Home';
 import Inbox from '@pages/Inbox';
 import Login from '@pages/Login';
@@ -36,4 +37,5 @@ export const ROUTES = [
   { component: Timesheets, path: '/timesheets', label: 'Timesheets', icon: TimesheetIcon, navigation: true },
   { component: More, path: '/more', label: 'More', icon: MoreCircleIcon, navigation: true },
   { component: Login, path: '/login', layout: AuthLayout },
+  { component: Everything, path: '/everything' },
 ] as Route[];

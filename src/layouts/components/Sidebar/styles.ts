@@ -1,5 +1,8 @@
 import { Box, Flex } from '@uikit';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+
+import SidebarItem from './SidebarItem';
 
 export const SidebarFrame = styled(Flex)`
   width: 100%;
@@ -44,7 +47,7 @@ export const SidebarFrame = styled(Flex)`
   }
 `;
 
-const SidebarItem = styled(Flex)`
+export const SidebarItemFlex = styled(Flex)`
   height: 32px;
   border-radius: 6px;
   padding: 6px 10px;
@@ -56,11 +59,15 @@ const SidebarItem = styled(Flex)`
   }
 `;
 
-export const NavigatorFrame = styled(Flex)`
-  .Navigator_link {
-    text-decoration: none;
+export const SidebarItemFrame = styled(NavLink)`
+  &.active {
+    ${SidebarItemFlex} {
+      background-color: ${({ theme }) => theme.colors.backgroundPrimaryOnSubtle};
+    }
   }
 `;
+
+export const NavigatorFrame = styled(Flex)``;
 
 export const NavigatorItem = styled(SidebarItem)``;
 
@@ -103,19 +110,8 @@ export const FavoritesFrame = styled(Flex)`
   }
 `;
 
-export const FavoriteItemFrame = styled(SidebarItem)``;
-
-export const SpacesFrame = styled(Flex)`
-  .Spaces_actionBtn.text {
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
-
-      cursor: pointer;
-    }
-  }
-`;
-
-export const SpaceItemFrame = styled(SidebarItem)`
+export const SpaceNodeFrame = styled(SidebarItemFlex)`
+  padding-block: 0;
   &:hover {
     .SpaceNode_expandBtn {
       display: inline-block;
@@ -132,6 +128,14 @@ export const SpaceItemFrame = styled(SidebarItem)`
         rotate: 90deg;
       }
     }
+  }
+
+  a {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
   }
 
   .SpaceNode_expandBtn {
@@ -151,6 +155,13 @@ export const SpaceItemFrame = styled(SidebarItem)`
   }
 
   .SpaceNode_icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .SpaceNode_listBtn {
@@ -163,6 +174,20 @@ export const SpaceItemFrame = styled(SidebarItem)`
     }
   }
 `;
+
+export const FavoriteItemFrame = styled(SidebarItem)``;
+
+export const SpacesFrame = styled(Flex)`
+  .Spaces_actionBtn.text {
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
+
+      cursor: pointer;
+    }
+  }
+`;
+
+export const SpaceItemFrame = styled(SidebarItem)``;
 
 export const SpaceTreeFrame = styled(Box)`
   [role='tree'] {
