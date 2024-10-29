@@ -26,6 +26,7 @@ export const lightColors = {
   borderPrimary: '#3db88b',
   borderHover: '#adb3bd',
   borderLowContrast: '#f0f1f3',
+  borderControlTagBorder: '#e8eaed',
 
   //content
   contentDefault: '#2a2e34',
@@ -41,6 +42,7 @@ export const lightColors = {
   contentIcon: '#b9bec7',
   contentError: '#e04f44',
   contentDropdownListTitle: '#87909e',
+  contentControlTag: '#656f7d',
 
   //icon
   iconFill: '#656f7d',

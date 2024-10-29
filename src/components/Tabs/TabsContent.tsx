@@ -2,16 +2,15 @@ import useTabs from '@hooks/useTabs';
 
 interface Props {
   value: string;
-  children: React.ReactNode;
+  component: React.ReactNode;
 }
 
-const TabsContent: React.FC<Props> = ({ value, children }) => {
+const TabsContent: React.FC<Props> = ({ value, component }) => {
   const { tab } = useTabs();
-  console.log('>> Check | tab:', tab);
 
   if (tab !== value) return null;
 
-  return <div>{children}</div>;
+  return component;
 };
 
 export default TabsContent;

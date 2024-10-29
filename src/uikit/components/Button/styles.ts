@@ -194,7 +194,7 @@ export const ButtonFrame = styled.button<ButtonProps>`
     align-items: center;
     justify-content: center;
 
-    line-height: 100%;
+    line-height: 1.5;
   }
 
   ${variant({ variants: buttonVariants })};
