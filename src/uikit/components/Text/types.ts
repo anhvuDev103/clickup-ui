@@ -15,6 +15,10 @@ export const variants = {
   MEDIUM16: 'medium16',
   SEMI16: 'semi16',
   BOLD16: 'bold16',
+  REGULAR24: 'regular24',
+  MEDIUM24: 'medium24',
+  SEMI24: 'semi24',
+  BOLD24: 'bold24',
 } as const;
 
 export type Variant = (typeof variants)[keyof typeof variants];

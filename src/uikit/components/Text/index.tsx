@@ -8,71 +8,80 @@ const styleVariants = {
   [variants.REGULAR12]: {
     fontSize: 12,
     fontWeight: 400,
-    color: 'contentDefault',
   },
   [variants.MEDIUM12]: {
     fontSize: 12,
     fontWeight: 500,
-    color: 'contentDefault',
   },
   [variants.SEMI12]: {
     fontSize: 12,
     fontWeight: 600,
-    color: 'contentDefault',
   },
   [variants.BOLD12]: {
     fontSize: 12,
     fontWeight: 700,
-    color: 'contentDefault',
   },
   [variants.REGULAR14]: {
     fontSize: 14,
     fontWeight: 400,
-    color: 'contentDefault',
+
     lineHeight: '16px',
   },
   [variants.MEDIUM14]: {
     fontSize: 14,
     fontWeight: 500,
-    color: 'contentDefault',
+
     lineHeight: '16px',
   },
   [variants.SEMI14]: {
     fontSize: 14,
     fontWeight: 600,
-    color: 'contentDefault',
+
     lineHeight: '16px',
   },
   [variants.BOLD14]: {
     fontSize: 14,
     fontWeight: 700,
-    color: 'contentDefault',
+
     lineHeight: '16px',
   },
   [variants.REGULAR16]: {
     fontSize: 16,
     fontWeight: 400,
-    color: 'contentDefault',
   },
   [variants.MEDIUM16]: {
     fontSize: 16,
     fontWeight: 500,
-    color: 'contentDefault',
   },
   [variants.SEMI16]: {
     fontSize: 16,
     fontWeight: 600,
-    color: 'contentDefault',
   },
   [variants.BOLD16]: {
     fontSize: 16,
     fontWeight: 700,
-    color: 'contentDefault',
+  },
+  [variants.REGULAR24]: {
+    fontSize: 24,
+    fontWeight: 400,
+  },
+  [variants.MEDIUM24]: {
+    fontSize: 24,
+    fontWeight: 500,
+  },
+  [variants.SEMI24]: {
+    fontSize: 24,
+    fontWeight: 600,
+  },
+  [variants.BOLD24]: {
+    fontSize: 24,
+    fontWeight: 700,
   },
 };
 
 const Text = styled.div<TextProps>`
-  line-height: 140%;
+  line-height: 100%;
+
   ${variant({
     variants: styleVariants,
   })};
