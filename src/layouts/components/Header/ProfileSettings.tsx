@@ -1,6 +1,7 @@
 import Avatar from '@components/Avatar';
 import { LocalStorageKey } from '@constants/localStorage';
 import useAppDataProvider from '@hooks/useAppDataProvider';
+import useToggle from '@hooks/useToggle';
 import { useRootStore } from '@stores/root';
 import { Button, DropdownMenu, Flex, Text } from '@uikit';
 import {
@@ -19,7 +20,6 @@ import {
   UserIcon,
 } from '@uikit/icons';
 import classNames from 'classnames';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ProfileSettingsFrame, ProfileSettingsHandler, ProfileSettingsPaper } from './styles';
@@ -29,10 +29,9 @@ const ProfileSettings = () => {
   const { setIsSignedIn } = useRootStore();
   const { user } = useAppDataProvider();
 
-  const [visible, setVisible] = useState(false);
+  const [visible, toggleVisible] = useToggle();
 
-  const show = () => setVisible(true);
-  const hide = () => setVisible(false);
+  const hide = () => toggleVisible(false);
 
   const logOut = () => {
     localStorage.removeItem(LocalStorageKey.AccessToken);
@@ -52,7 +51,7 @@ const ProfileSettings = () => {
         <ProfileSettingsHandler
           gap={0.5}
           ml='6px'
-          onClick={visible ? hide : show}
+          onClick={() => toggleVisible()}
           className={classNames({ ProfileSettings_visible: visible })}
         >
           <Avatar

@@ -6,6 +6,7 @@ import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-plugin-prettier';
+import react from 'eslint-plugin-react';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import globals from 'globals';
@@ -32,6 +33,7 @@ export default [
   ),
   {
     plugins: {
+      react,
       'react-refresh': reactRefresh,
       'simple-import-sort': simpleImportSort,
       prettier,
@@ -67,6 +69,10 @@ export default [
           jsxSingleQuote: true,
         },
       ],
+
+      'react/prop-types': 'off',
+      'react/display-name': 'off',
+      'react/jsx-curly-brace-presence': 'warn',
 
       '@typescript-eslint/no-explicit-any': 'warn',
 

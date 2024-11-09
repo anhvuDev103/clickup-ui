@@ -37,6 +37,7 @@ export interface ButtonProps
   color?: Color;
   textVariant?: TextVariant;
   backgroundColorHover?: Color;
+  colorHover?: Color;
 
   label?: string;
   labelPlacement?: Placement;

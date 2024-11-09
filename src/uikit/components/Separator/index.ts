@@ -16,9 +16,10 @@ Separator.defaultProps = {
 export const Divider = styled(Box)`
   width: 100%;
   min-height: 1px;
-  margin-block: 8px;
 `;
 
 Divider.defaultProps = {
   backgroundColor: 'borderDefault',
+  mt: 2,
+  mb: 2,
 };

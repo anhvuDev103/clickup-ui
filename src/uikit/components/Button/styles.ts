@@ -211,6 +211,18 @@ export const ButtonFrame = styled.button<ButtonProps>`
       }
     `};
 
+  ${({ theme, colorHover }) =>
+    colorHover &&
+    css`
+      &:hover {
+        color: ${getColor({ theme, color: colorHover })};
+
+        svg {
+          color: ${getColor({ theme, color: colorHover })};
+        }
+      }
+    `};
+
   ${color};
   ${border};
   ${space};

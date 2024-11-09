@@ -1,10 +1,9 @@
-import { Box, Flex } from '@uikit';
 import _ from 'lodash';
 import { Tree } from 'react-arborist';
 
 import SpaceNode from './SpaceNode';
 import { SpaceTreeFrame } from './styles';
-import { FormattedHierarchy, FormattedSimpleCategory, GetHierarchyResponse, SpaceTreeData } from './types';
+import { FormattedHierarchy, FormattedSimpleCategory, GetHierarchyResponse } from './types';
 
 const spacesHierarchy: GetHierarchyResponse[] = [
   {

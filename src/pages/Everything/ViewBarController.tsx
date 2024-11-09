@@ -1,5 +1,8 @@
 import Tabs from '@components/Tabs';
-import { Button, Flex, Popover, Separator, Text } from '@uikit';
+import { GROUP_BY, ORDER_BY } from '@constants/options';
+import { Box, Button, Divider, Flex, Popover, Separator, Text } from '@uikit';
+import Select from '@uikit/components/Select';
+import Switch from '@uikit/components/Switch';
 import {
   AddIcon,
   BoardViewIcon,
@@ -12,7 +15,10 @@ import {
   SearchIcon,
   SettingsIcon,
   SubtaskIcon,
+  TrashIcon,
 } from '@uikit/icons';
+import { SelectItem } from '@uikit/types';
+import { useState } from 'react';
 
 interface Props {
   isExpandHeader: boolean;
@@ -20,6 +26,9 @@ interface Props {
 }
 
 const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader }) => {
+  const [groupBy, setGroupBy] = useState<SelectItem>(GROUP_BY[0]);
+  const [orderBy, setOrderBy] = useState<SelectItem>(ORDER_BY[0]);
+
   return (
     <>
       <Flex
@@ -108,11 +117,32 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
           paperProps={{
             pt: 1,
             pb: 2,
+            flexDirection: 'column',
           }}
         >
-          <Text variant='medium12' color='contentTertiary'>
-            Group by
-          </Text>
+          <Box p={2}>
+            <Text pl={2} pb={2} variant='medium12' color='contentTertiary'>
+              Group by
+            </Text>
+            <Flex gap={2}>
+              <Select
+                options={GROUP_BY}
+                selected={groupBy}
+                onSelect={setGroupBy}
+                triggerProps={{
+                  width: 200,
+                }}
+              />
+              <Select options={ORDER_BY} selected={orderBy} onSelect={setOrderBy} />
+              <Button backgroundColorHover='backgroundDangerSubtle' colorHover='contentDanger' variant='text' square>
+                <TrashIcon width='16px' height='16px' />
+              </Button>
+            </Flex>
+          </Box>
+          <Divider mt={0} />
+          <Box px={2} width='100%'>
+            <Switch label='Also group by List' />
+          </Box>
         </Popover>
         <Button
           variant='outlined'

@@ -1,5 +1,5 @@
 import Tippy from '@tippyjs/react/headless';
-import { MotionValue, useSpring } from 'framer-motion';
+import { useSpring } from 'framer-motion';
 
 import { MotionPaper } from '../Paper';
 import { Props } from './types';
@@ -45,7 +45,7 @@ const Popover: React.FC<Props> = ({ handler, children, paperProps, ...props }) =
       animation={true}
       onMount={onMount}
       onHide={onHide}
-      trigger='click'
+      trigger={props.visible === undefined ? 'click' : undefined}
       interactive
       {...props}
     >

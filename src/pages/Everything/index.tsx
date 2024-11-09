@@ -1,6 +1,5 @@
 import Tabs from '@components/Tabs';
 import { Box, Button, Flex, Text } from '@uikit';
-import { ColumnIcon, GroupIcon, SubtaskIcon } from '@uikit/icons';
 import { useState } from 'react';
 
 import List from './List';

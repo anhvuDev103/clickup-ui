@@ -22,7 +22,7 @@ const Favorites = () => {
           variant='text'
           scale='xs'
           endIcon={<ChevronDownIcon width={16} height={16} />}
-          className={'Favorites_expanseBtn'}
+          className='Favorites_expanseBtn'
           onClick={() => toggleExpand()}
         >
           Favorites

@@ -40,3 +40,11 @@ export const EverythingFrame = styled(Page)<EverythingFrameProps>`
       }
     `}
 `;
+
+export const ViewBarControllerFrame = styled.div`
+  .ViewBarController_removeBtn {
+    &:hover {
+      color: red;
+    }
+  }
+`;

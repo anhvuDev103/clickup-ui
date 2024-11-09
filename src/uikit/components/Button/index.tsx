@@ -23,6 +23,7 @@ const Button: React.FC<ButtonProps> = forwardRef(
       label,
       labelPlacement,
       backgroundColorHover,
+      colorHover,
       ...props
     },
     ref: React.Ref<HTMLButtonElement>,
@@ -52,6 +53,7 @@ const Button: React.FC<ButtonProps> = forwardRef(
         variant={variant}
         className={classNames([className, variant, { Button_square: square, Button_circle: circle }])}
         backgroundColorHover={backgroundColorHover}
+        colorHover={colorHover}
         ref={ref}
         {...props}
       >
