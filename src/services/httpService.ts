@@ -2,7 +2,7 @@ import { HttpStatus } from '@constants/enums';
 import { LocalStorageKey } from '@constants/localStorage';
 import { RefreshTokenRequest } from '@schemas/requests/auth';
 import { RefreshTokenResponse } from '@schemas/responses/auth';
-import axios, { AxiosInstance, AxiosRequestHeaders } from 'axios';
+import axios, { AxiosInstance, AxiosRequestHeaders, AxiosResponse } from 'axios';
 
 export interface ApiReponse<T = undefined> {
   message: string;
@@ -56,8 +56,8 @@ class Http {
 
             if (!refreshToken) throw new Error('Refresh Token Not Found');
 
-            const data = await this.instance.post<never, RefreshTokenResponse, RefreshTokenRequest>(
-              '/auth/refresh-token',
+            const { data } = await axios.post<never, AxiosResponse<RefreshTokenResponse>, RefreshTokenRequest>(
+              `${import.meta.env.VITE_API_ENDPOINT}/auth/refresh-token`,
               {
                 refresh_token: refreshToken,
               },
