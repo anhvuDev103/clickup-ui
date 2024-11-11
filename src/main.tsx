@@ -2,6 +2,7 @@ import 'normalize.css';
 import './index.css';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
+import '@utils/overrides.ts';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';

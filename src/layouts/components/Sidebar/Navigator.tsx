@@ -10,7 +10,14 @@ const Navigator = () => {
         const Icon = route.icon!;
 
         return (
-          <NavigatorItem to={route.path} gap='10px' color='contentDefault' justifyContent='unset' mx={2}>
+          <NavigatorItem
+            to={route.path}
+            gap='10px'
+            color='contentDefault'
+            justifyContent='unset'
+            mx={2}
+            key={route.path}
+          >
             <Icon width={20} height={20} />
             <Text variant='regular14'>{route.label}</Text>
           </NavigatorItem>

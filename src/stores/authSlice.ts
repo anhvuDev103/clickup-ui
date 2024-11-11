@@ -19,14 +19,10 @@ export const createAuthSlice: StateCreator<
 > = (set) => {
   let isSignedIn = false;
 
-  const now = Math.floor(new Date().getTime() / 1000);
   const accessToken = localStorage.getItem(LocalStorageKey.AccessToken);
+  const refreshToken = localStorage.getItem(LocalStorageKey.RefreshToken);
 
-  if (accessToken) {
-    const decodedToken = jwtDecode(accessToken!);
-
-    isSignedIn = decodedToken.exp! > now;
-  }
+  isSignedIn = Boolean(accessToken && refreshToken);
 
   return {
     isSignedIn,

@@ -1,3 +1,7 @@
+import { HttpStatus } from '@constants/enums';
+import { LocalStorageKey } from '@constants/localStorage';
+import { RefreshTokenRequest } from '@schemas/requests/auth';
+import { RefreshTokenResponse } from '@schemas/responses/auth';
 import axios, { AxiosInstance, AxiosRequestHeaders } from 'axios';
 
 export interface ApiReponse<T = undefined> {
@@ -18,7 +22,7 @@ class Http {
 
     this.instance.interceptors.request.use(
       (request) => {
-        const accessToken = localStorage.getItem('access_token');
+        const accessToken = localStorage.getItem(LocalStorageKey.AccessToken);
 
         const headers = {
           ...request.headers,
@@ -41,7 +45,37 @@ class Http {
       (response) => {
         return response.data;
       },
-      (error) => {
+      async (error) => {
+        const originalRequest = error.config;
+
+        if (error.response.status === HttpStatus.Unauthorized && !originalRequest._retry) {
+          originalRequest._retry = true;
+
+          try {
+            const refreshToken = localStorage.getItem(LocalStorageKey.RefreshToken);
+
+            if (!refreshToken) throw new Error('Refresh Token Not Found');
+
+            const data = await this.instance.post<never, RefreshTokenResponse, RefreshTokenRequest>(
+              '/auth/refresh-token',
+              {
+                refresh_token: refreshToken,
+              },
+            );
+
+            localStorage.setItem(LocalStorageKey.AccessToken, data.result.access_token);
+            localStorage.setItem(LocalStorageKey.RefreshToken, data.result.refresh_token);
+
+            this.instance.defaults.headers.common['Authorization'] = 'Bearer ' + data.result.access_token;
+
+            return this.instance(originalRequest);
+          } catch (error) {
+            console.error('Unable to refresh access token:', error);
+
+            return Promise.reject(error);
+          }
+        }
+
         return Promise.reject(error);
       },
     );

@@ -44,8 +44,8 @@ const Favorites = () => {
           maxHeight: isExpand ? 32 * 3 : 0,
         }}
       >
-        {[...Array(3)].map(() => (
-          <FavoriteItem />
+        {[...Array(3)].map((_, i) => (
+          <FavoriteItem key={i} />
         ))}
       </Flex>
     </FavoritesFrame>
