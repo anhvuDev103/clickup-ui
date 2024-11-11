@@ -25,6 +25,7 @@ export const lightColors = {
   //border
   borderDefault: '#e8eaed',
   borderPrimary: '#3db88b',
+  borderPrimaryFocus: '#3db88b',
   borderHover: '#adb3bd',
   borderLowContrast: '#f0f1f3',
   borderHighContrast: '#d6d9de',
@@ -50,6 +51,9 @@ export const lightColors = {
 
   //icon
   iconFill: '#656f7d',
+
+  //effect
+  effectPrimary: '#3db88b29',
 };
 
 export const darkColors = {

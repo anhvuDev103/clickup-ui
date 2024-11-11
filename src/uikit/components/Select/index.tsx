@@ -1,61 +1,37 @@
-import useToggle from '@hooks/useToggle';
+import { Children } from 'react';
 
-import { Flex } from '../Box';
-import { CheckIcon, ChevronDownIcon } from '../Svg';
-import Text from '../Text';
-import { SelectFrame, SelectItem, SelectTrigger } from './styles';
-import { Props, SelectItem as SelectItemType } from './types';
+import Popover from '../Popover';
+import SelectContent from './SelectContent';
+import SelectGroup from './SelectGroup';
+import SelectItem from './SelectItem';
+import SelectSeparator from './SelectSeparator';
+import SelectTrigger from './SelectTrigger';
+import { SelectRootProps } from './types';
 
-const Select: React.FC<Props> = ({ options, selected, activeIcon, triggerProps, onSelect }) => {
-  const [visible, toggleVisible] = useToggle();
-
-  const select = (option: SelectItemType) => () => {
-    onSelect(option);
-    toggleVisible();
-  };
-
-  const hide = () => toggleVisible(false);
-
-  const SelectedIcon = selected.icon;
+const SelectRoot: React.FC<SelectRootProps> = ({ children, paperProps, defaultValue }) => {
+  const [selectTrigger, selectContent] = Children.toArray(children);
 
   return (
-    <SelectFrame
-      visible={visible}
-      onClickOutside={hide}
-      handler={
-        <SelectTrigger width='120px' onClick={() => toggleVisible()} {...triggerProps}>
-          {SelectedIcon && <SelectedIcon width='16px' height='16px' color='iconFill' mr='10px' />}
-          <Text fontSize='14px' mr='auto'>
-            {selected.label}
-          </Text>
-          <ChevronDownIcon width='16px' height='16px' color='contentPlaceholder' />
-        </SelectTrigger>
-      }
+    <Popover
       placement='bottom-start'
+      handler={<div>{selectTrigger}</div>}
       paperProps={{
-        minWidth: '184px',
-        maxWidth: '256px',
+        py: 2,
+        ...paperProps,
       }}
     >
-      <Flex p={2} flexDirection='column' alignItems='stretch' flex={1}>
-        {options.map((option) => {
-          const OptionIcon = option.icon;
-
-          const isSelected = selected.label === option.label;
-
-          return (
-            <SelectItem key={option.label} onClick={select(option)}>
-              {OptionIcon && <OptionIcon width='16px' height='16px' color='iconFill' mr='10px' />}
-              <Text fontSize='14px' mr='auto'>
-                {option.label}
-              </Text>
-              {isSelected && (activeIcon || <CheckIcon width='16px' height='16px' color='contentPrimary' />)}
-            </SelectItem>
-          );
-        })}
-      </Flex>
-    </SelectFrame>
+      {selectContent}
+    </Popover>
   );
+};
+
+const Select = {
+  Root: SelectRoot,
+  Trigger: SelectTrigger,
+  Content: SelectContent,
+  Item: SelectItem,
+  Group: SelectGroup,
+  Separator: SelectSeparator,
 };
 
 export default Select;

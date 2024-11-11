@@ -1,8 +1,8 @@
 import Tabs from '@components/Tabs';
 import { GROUP_BY, ORDER_BY } from '@constants/options';
-import { Box, Button, Divider, Flex, Popover, Separator, Text } from '@uikit';
+import { Box, Button, Divider, Flex, Popover, Separator, Switch, Text } from '@uikit';
 import Select from '@uikit/components/Select';
-import Switch from '@uikit/components/Switch';
+import { SelectItem } from '@uikit/components/Select/types';
 import {
   AddIcon,
   BoardViewIcon,
@@ -15,9 +15,7 @@ import {
   SearchIcon,
   SettingsIcon,
   SubtaskIcon,
-  TrashIcon,
 } from '@uikit/icons';
-import { SelectItem } from '@uikit/types';
 import { useState } from 'react';
 
 interface Props {
@@ -100,6 +98,44 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
         justifyContent='flex-start'
         className='Everything_viewSettings'
       >
+        <Select.Root
+          defaultValue={groupBy.value}
+          paperProps={{
+            width: 184,
+            flexDirection: 'column',
+            alignItems: 'stretch',
+          }}
+        >
+          <Select.Trigger>
+            <Button
+              variant='outlined'
+              scale='xs'
+              borderRadius='12px'
+              borderColor='borderControlTagBorder'
+              color='contentControlTag'
+              startIcon={<GroupIcon width={14} height={14} />}
+            >
+              Group: Status
+            </Button>
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Group>
+              {GROUP_BY.map((option) => {
+                const OptionIcon = option.icon;
+                return (
+                  <Select.Item key={option.label}>
+                    {OptionIcon && <OptionIcon width='16px' height='16px' color='iconFill' mr='10px' />}
+                    <Text fontSize='14px'>{option.label}</Text>
+                  </Select.Item>
+                );
+              })}
+            </Select.Group>
+            <Select.Separator />
+            <Select.Group>
+              <Switch label='Also group by List' />
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
         <Popover
           placement='bottom-start'
           handler={
@@ -121,11 +157,11 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
           }}
         >
           <Box p={2}>
-            <Text pl={2} pb={2} variant='medium12' color='contentTertiary'>
-              Group by
-            </Text>
             <Flex gap={2}>
-              <Select
+              {/* <Text pl={2} pb={2} variant='medium12' color='contentTertiary'>
+              Group by
+            </Text> */}
+              {/* <Select
                 options={GROUP_BY}
                 selected={groupBy}
                 onSelect={setGroupBy}
@@ -133,10 +169,10 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
                   width: 200,
                 }}
               />
-              <Select options={ORDER_BY} selected={orderBy} onSelect={setOrderBy} />
-              <Button backgroundColorHover='backgroundDangerSubtle' colorHover='contentDanger' variant='text' square>
+              <Select options={ORDER_BY} selected={orderBy} onSelect={setOrderBy} /> */}
+              {/* <Button backgroundColorHover='backgroundDangerSubtle' colorHover='contentDanger' variant='text' square>
                 <TrashIcon width='16px' height='16px' />
-              </Button>
+              </Button> */}
             </Flex>
           </Box>
           <Divider mt={0} />
