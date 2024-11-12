@@ -10,9 +10,7 @@ function App() {
   const { isSignedIn } = useRootStore();
 
   useEffect(() => {
-    if (isSignedIn) {
-      navigate('/home');
-    } else {
+    if (!isSignedIn) {
       navigate('/login');
     }
 
