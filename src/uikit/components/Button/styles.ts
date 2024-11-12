@@ -195,6 +195,7 @@ export const ButtonFrame = styled.button<ButtonProps>`
     justify-content: center;
 
     line-height: 1.5;
+    color: currentColor;
   }
 
   ${variant({ variants: buttonVariants })};

@@ -1,28 +1,30 @@
-import { Children } from 'react';
+import { useEffect, useId, useRef } from 'react';
 
-import Popover from '../Popover';
+import { Context as SelectContext } from './context';
 import SelectContent from './SelectContent';
 import SelectGroup from './SelectGroup';
 import SelectItem from './SelectItem';
 import SelectSeparator from './SelectSeparator';
 import SelectTrigger from './SelectTrigger';
-import { SelectRootProps } from './types';
+import { SelectOption, SelectRootProps } from './types';
 
-const SelectRoot: React.FC<SelectRootProps> = ({ children, paperProps, defaultValue }) => {
-  const [selectTrigger, selectContent] = Children.toArray(children);
+const SelectRoot: React.FC<SelectRootProps> = ({ children, selected, onSelect }) => {
+  const id = useId();
+  const ref = useRef<HTMLElement | null>(null);
 
-  return (
-    <Popover
-      placement='bottom-start'
-      handler={<div>{selectTrigger}</div>}
-      paperProps={{
-        py: 2,
-        ...paperProps,
-      }}
-    >
-      {selectContent}
-    </Popover>
-  );
+  useEffect(() => {
+    ref.current = document.getElementById(id);
+  }, [id]);
+
+  const select = (option: SelectOption) => () => {
+    onSelect(option);
+
+    if (ref.current?._tippy) {
+      ref.current._tippy.hide();
+    }
+  };
+
+  return <SelectContext.Provider value={{ id, selected, select }}>{children}</SelectContext.Provider>;
 };
 
 const Select = {

@@ -1,5 +1,6 @@
 import Page from '@layouts/components/Page';
 import { Props as PageProps } from '@layouts/components/Page/types';
+import { Button } from '@uikit';
 import styled, { css } from 'styled-components';
 
 type EverythingFrameProps = PageProps & {
@@ -45,6 +46,27 @@ export const ViewBarControllerFrame = styled.div`
   .ViewBarController_removeBtn {
     &:hover {
       color: red;
+    }
+  }
+`;
+
+export const FilterBadge = styled(Button)`
+  color: ${({ theme }) => theme.colors.contentControlTag};
+  border-color: ${({ theme }) => theme.colors.borderControlTagBorder};
+
+  padding-inline: 8px !important;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.backgroundMainHover};
+  }
+
+  &.FilterBadge_active {
+    background-color: ${({ theme }) => theme.colors.backgroundPrimarySubtle};
+    color: ${({ theme }) => theme.colors.contentPrimary};
+    border-color: ${({ theme }) => theme.colors.borderPrimaryLowContrast};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.backgroundPrimaryOnSubtle};
     }
   }
 `;

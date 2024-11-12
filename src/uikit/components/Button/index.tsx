@@ -8,7 +8,7 @@ import { Variant as TextVariant } from '../Text/types';
 import { ButtonFrame } from './styles';
 import { ButtonProps, scales, variants } from './types';
 
-const Button: React.FC<ButtonProps> = forwardRef(
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       children,
@@ -26,7 +26,7 @@ const Button: React.FC<ButtonProps> = forwardRef(
       colorHover,
       ...props
     },
-    ref: React.Ref<HTMLButtonElement>,
+    ref,
   ) => {
     const textVariant =
       _textVariant ||
@@ -59,7 +59,7 @@ const Button: React.FC<ButtonProps> = forwardRef(
       >
         {startIcon && <div className='Button_startIcon'>{startIcon}</div>}
 
-        <Text variant={textVariant} color={textColor} className='Button_label'>
+        <Text variant={textVariant} className='Button_label'>
           {children}
         </Text>
 
@@ -76,6 +76,7 @@ const Button: React.FC<ButtonProps> = forwardRef(
         trigger='mouseenter focus'
         handler={button}
         delay={[500, 0]}
+        ref={ref}
       >
         <Flex backgroundColor='backgroundTooltip' px={3} py={2} borderRadius={8}>
           <Text variant='medium12' color='contentOnDark'>

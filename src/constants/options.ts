@@ -1,4 +1,4 @@
-import { SelectItem } from '@uikit/components/Select/types';
+import { SelectOption } from '@uikit/components/Select/types';
 import { DateDueIcon, ItemTypeIcon, PriorityIcon, StatusIcon, TagIcon, UserIcon } from '@uikit/icons';
 
 export const GROUP_BY = [
@@ -32,7 +32,7 @@ export const GROUP_BY = [
     label: 'Task type',
     icon: ItemTypeIcon,
   },
-] as const satisfies SelectItem[];
+] as const satisfies SelectOption[];
 
 export const ORDER_BY = [
   {
@@ -43,4 +43,21 @@ export const ORDER_BY = [
     value: 'descending',
     label: 'Descending',
   },
-] as const satisfies SelectItem[];
+] as const satisfies SelectOption[];
+
+export const SHOW_SUBTASKS_TYPE = [
+  {
+    value: 'collapse',
+    label: 'Collapse all',
+    note: '(default)',
+  },
+  {
+    value: 'expand',
+    label: 'Expand all',
+  },
+  {
+    value: 'separate',
+    label: 'As separate tasks',
+    describe: 'Use this to filter subtasks',
+  },
+] as SelectOption[];

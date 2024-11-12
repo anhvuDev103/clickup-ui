@@ -21,10 +21,13 @@ export const lightColors = {
   backgroundOnMainHover: '#e8eaed',
   backgroundOnSubtleHover: '#d6d9de',
   backgroundTooltip: '#000000',
+  backgroundPrimarySubtle: '#f0f9f6',
+  backgroundMainHover: '#f7f8f9',
 
   //border
   borderDefault: '#e8eaed',
   borderPrimary: '#3db88b',
+  borderPrimaryLowContrast: '#c1e8da',
   borderPrimaryFocus: '#3db88b',
   borderHover: '#adb3bd',
   borderLowContrast: '#f0f1f3',

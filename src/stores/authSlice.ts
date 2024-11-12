@@ -1,5 +1,4 @@
 import { LocalStorageKey } from '@constants/localStorage';
-import { jwtDecode } from 'jwt-decode';
 import _ from 'lodash';
 import { StateCreator } from 'zustand';
 

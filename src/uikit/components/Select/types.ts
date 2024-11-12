@@ -2,10 +2,12 @@ import { FlexProps, SvgProps } from '@uikit/types';
 
 import { PaperProps } from '../Paper/types';
 
-export interface SelectRootProps extends FlexProps {
+export type SelectValue = string | number;
+
+export interface SelectRootProps extends Omit<FlexProps, 'onSelect'> {
   children: React.ReactNode;
-  paperProps?: PaperProps;
-  defaultValue?: string;
+  selected?: SelectOption;
+  onSelect: React.Dispatch<React.SetStateAction<SelectOption>> | ((option: SelectOption) => void);
 }
 
 export interface SelectTriggerProps extends FlexProps {
@@ -14,18 +16,29 @@ export interface SelectTriggerProps extends FlexProps {
 
 export interface SelectContentProps extends FlexProps {
   children: React.ReactNode;
+  paperProps?: PaperProps;
 }
 
 export interface SelectItemProps extends FlexProps {
   children: React.ReactNode;
+  option: SelectOption;
 }
 
 export interface SelectGroupProps extends FlexProps {
   children: React.ReactNode;
+  label?: string;
 }
 
-export interface SelectItem {
+export interface SelectOption {
   label: string;
   icon?: React.FC<SvgProps>;
-  value: string;
+  value: SelectValue;
+  note?: string;
+  describe?: string;
+}
+
+export interface SelectContext {
+  id: string;
+  selected?: SelectOption;
+  select: (value: SelectOption) => () => void;
 }

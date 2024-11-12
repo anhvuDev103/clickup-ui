@@ -1,8 +1,7 @@
 import Tabs from '@components/Tabs';
-import { GROUP_BY, ORDER_BY } from '@constants/options';
-import { Box, Button, Divider, Flex, Popover, Separator, Switch, Text } from '@uikit';
+import { GROUP_BY, ORDER_BY, SHOW_SUBTASKS_TYPE } from '@constants/options';
+import { Button, Flex, Separator, Switch, Text } from '@uikit';
 import Select from '@uikit/components/Select';
-import { SelectItem } from '@uikit/components/Select/types';
 import {
   AddIcon,
   BoardViewIcon,
@@ -14,9 +13,12 @@ import {
   ListViewIcon,
   SearchIcon,
   SettingsIcon,
-  SubtaskIcon,
 } from '@uikit/icons';
+import { SelectOption } from '@uikit/types';
+import classNames from 'classnames';
 import { useState } from 'react';
+
+import { FilterBadge } from './styles';
 
 interface Props {
   isExpandHeader: boolean;
@@ -24,8 +26,9 @@ interface Props {
 }
 
 const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader }) => {
-  const [groupBy, setGroupBy] = useState<SelectItem>(GROUP_BY[0]);
-  const [orderBy, setOrderBy] = useState<SelectItem>(ORDER_BY[0]);
+  const [groupBy, setGroupBy] = useState<SelectOption>();
+  const [orderBy, setOrderBy] = useState<SelectOption>(ORDER_BY[0]);
+  const [showSubtasksType, setShowSubtasksType] = useState<SelectOption>(SHOW_SUBTASKS_TYPE[0]);
 
   return (
     <>
@@ -98,32 +101,24 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
         justifyContent='flex-start'
         className='Everything_viewSettings'
       >
-        <Select.Root
-          defaultValue={groupBy.value}
-          paperProps={{
-            width: 184,
-            flexDirection: 'column',
-            alignItems: 'stretch',
-          }}
-        >
+        <Select.Root selected={groupBy} onSelect={setGroupBy}>
           <Select.Trigger>
-            <Button
+            <FilterBadge
               variant='outlined'
               scale='xs'
               borderRadius='12px'
-              borderColor='borderControlTagBorder'
-              color='contentControlTag'
               startIcon={<GroupIcon width={14} height={14} />}
+              className={classNames({ FilterBadge_active: Boolean(groupBy) })}
             >
-              Group: Status
-            </Button>
+              Group: {groupBy?.label || 'None'}
+            </FilterBadge>
           </Select.Trigger>
           <Select.Content>
             <Select.Group>
               {GROUP_BY.map((option) => {
                 const OptionIcon = option.icon;
                 return (
-                  <Select.Item key={option.label}>
+                  <Select.Item option={option} key={option.value}>
                     {OptionIcon && <OptionIcon width='16px' height='16px' color='iconFill' mr='10px' />}
                     <Text fontSize='14px'>{option.label}</Text>
                   </Select.Item>
@@ -136,60 +131,43 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
             </Select.Group>
           </Select.Content>
         </Select.Root>
-        <Popover
-          placement='bottom-start'
-          handler={
-            <Button
+        <Select.Root selected={showSubtasksType} onSelect={setShowSubtasksType}>
+          <Select.Trigger>
+            <FilterBadge
               variant='outlined'
               scale='xs'
               borderRadius='12px'
-              borderColor='borderControlTagBorder'
-              color='contentControlTag'
               startIcon={<GroupIcon width={14} height={14} />}
             >
-              Group: Status
-            </Button>
-          }
-          paperProps={{
-            pt: 1,
-            pb: 2,
-            flexDirection: 'column',
-          }}
-        >
-          <Box p={2}>
-            <Flex gap={2}>
-              {/* <Text pl={2} pb={2} variant='medium12' color='contentTertiary'>
-              Group by
-            </Text> */}
-              {/* <Select
-                options={GROUP_BY}
-                selected={groupBy}
-                onSelect={setGroupBy}
-                triggerProps={{
-                  width: 200,
-                }}
-              />
-              <Select options={ORDER_BY} selected={orderBy} onSelect={setOrderBy} /> */}
-              {/* <Button backgroundColorHover='backgroundDangerSubtle' colorHover='contentDanger' variant='text' square>
-                <TrashIcon width='16px' height='16px' />
-              </Button> */}
-            </Flex>
-          </Box>
-          <Divider mt={0} />
-          <Box px={2} width='100%'>
-            <Switch label='Also group by List' />
-          </Box>
-        </Popover>
-        <Button
-          variant='outlined'
-          scale='xs'
-          borderRadius='12px'
-          borderColor='borderControlTagBorder'
-          color='contentControlTag'
-          startIcon={<SubtaskIcon width={14} height={14} />}
-        >
-          Subtasks: Collapse all
-        </Button>
+              Subtasks: {showSubtasksType.label}
+            </FilterBadge>
+          </Select.Trigger>
+          <Select.Content>
+            <Select.Group label='Show subtasks'>
+              {SHOW_SUBTASKS_TYPE.map((option) => {
+                return (
+                  <Select.Item option={option} key={option.value}>
+                    <Flex flexDirection='column' alignItems='flex-start' gap={2}>
+                      <Flex gap={1} alignItems='baseline'>
+                        <Text fontSize='14px'>{option.label}</Text>
+                        {option.note && (
+                          <Text fontSize='12px' color='contentPlaceholder'>
+                            {option.note}
+                          </Text>
+                        )}
+                      </Flex>
+                      {option.describe && (
+                        <Text fontSize='11px' color='contentPlaceholder'>
+                          {option.describe}
+                        </Text>
+                      )}
+                    </Flex>
+                  </Select.Item>
+                );
+              })}
+            </Select.Group>
+          </Select.Content>
+        </Select.Root>
         <Button
           variant='outlined'
           scale='xs'

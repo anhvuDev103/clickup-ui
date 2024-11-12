@@ -29,7 +29,8 @@ export interface ButtonProps
     BorderProps<Theme>,
     SpaceProps,
     LayoutProps,
-    FlexboxProps {
+    FlexboxProps,
+    React.ComponentPropsWithRef<'button'> {
   scale?: Scale;
   variant?: Variant;
   square?: boolean;

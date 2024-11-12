@@ -12,4 +12,7 @@ export const SelectItemFrame = styled(Flex)`
 
     cursor: pointer;
   }
+
+  &.SelectItem_active {
+  }
 `;
