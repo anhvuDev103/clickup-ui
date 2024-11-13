@@ -1,19 +1,15 @@
-import { cloneElement } from 'react';
-
 import { Flex } from '../Box';
 import { useSelectContext } from './context';
 import { SelectTriggerProps } from './types';
 
 const SelectTrigger: React.FC<SelectTriggerProps> = ({ children }) => {
-  const { id } = useSelectContext();
+  const { selected } = useSelectContext();
 
-  return (
-    <Flex>
-      {cloneElement(children as React.ReactElement, {
-        id,
-      })}
-    </Flex>
-  );
+  if (typeof children === 'function') {
+    return <Flex>{children(selected)}</Flex>;
+  }
+
+  return <Flex>{children}</Flex>;
 };
 
 export default SelectTrigger;

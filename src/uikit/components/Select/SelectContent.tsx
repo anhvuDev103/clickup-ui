@@ -1,22 +1,43 @@
-import { useEffect, useRef } from 'react';
-
-import { Flex } from '../Box';
+import { Box, Flex } from '../Box';
 import Popover from '../Popover';
 import { useSelectContext } from './context';
 import { SelectContentProps } from './types';
 
-const SelectContent: React.FC<SelectContentProps> = ({ children, paperProps }) => {
-  const { id } = useSelectContext();
+const SelectContent: React.FC<SelectContentProps> = ({ children, trigger, paperProps }) => {
+  const { ref } = useSelectContext();
 
-  const ref = useRef<HTMLElement | null>(null);
+  if (typeof children === 'function') {
+    const close = () => {
+      if (ref?.current?._tippy) {
+        ref.current._tippy.hide();
+        return;
+      }
 
-  useEffect(() => {
-    ref.current = document.getElementById(id);
-  }, [id]);
+      console.error('_tippy not found');
+    };
+
+    return (
+      <Popover
+        ref={ref}
+        handler={<Box>{trigger}</Box>}
+        placement='bottom-start'
+        paperProps={{
+          py: 2,
+          minWidth: 184,
+          ...paperProps,
+        }}
+      >
+        <Flex flexDirection='column' width='100%'>
+          {children({ close })}
+        </Flex>
+      </Popover>
+    );
+  }
 
   return (
     <Popover
-      reference={ref}
+      ref={ref}
+      handler={<Box>{trigger}</Box>}
       placement='bottom-start'
       paperProps={{
         py: 2,
@@ -25,7 +46,7 @@ const SelectContent: React.FC<SelectContentProps> = ({ children, paperProps }) =
       }}
     >
       <Flex flexDirection='column' width='100%'>
-        {children}
+        {children as React.ReactNode}
       </Flex>
     </Popover>
   );

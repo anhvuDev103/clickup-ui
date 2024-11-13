@@ -1,7 +1,5 @@
 import Tabs from '@components/Tabs';
-import { GROUP_BY, ORDER_BY, SHOW_SUBTASKS_TYPE } from '@constants/options';
-import { Button, Flex, Separator, Switch, Text } from '@uikit';
-import Select from '@uikit/components/Select';
+import { Button, Flex, Separator } from '@uikit';
 import {
   AddIcon,
   BoardViewIcon,
@@ -9,17 +7,13 @@ import {
   ChevronDownIcon,
   ColumnIcon,
   CustomizeIcon,
-  GroupIcon,
   ListViewIcon,
   SearchIcon,
   SettingsIcon,
 } from '@uikit/icons';
-import { SelectOption } from '@uikit/types';
-import classNames from 'classnames';
-import { useState } from 'react';
 
 import GroupBadge from './GroupBadge';
-import { FilterBadge } from './styles';
+import SubtasksBadge from './SubtasksBadge';
 
 interface Props {
   isExpandHeader: boolean;
@@ -27,9 +21,6 @@ interface Props {
 }
 
 const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader }) => {
-  const [orderBy, setOrderBy] = useState<SelectOption>(ORDER_BY[0]);
-  const [showSubtasksType, setShowSubtasksType] = useState<SelectOption>(SHOW_SUBTASKS_TYPE[0]);
-
   return (
     <>
       <Flex
@@ -102,43 +93,7 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
         className='Everything_viewSettings'
       >
         <GroupBadge />
-        <Select.Root selected={showSubtasksType} onSelect={setShowSubtasksType}>
-          <Select.Trigger>
-            <FilterBadge
-              variant='outlined'
-              scale='xs'
-              borderRadius='12px'
-              startIcon={<GroupIcon width={14} height={14} />}
-            >
-              Subtasks: {showSubtasksType.label}
-            </FilterBadge>
-          </Select.Trigger>
-          <Select.Content>
-            <Select.Group label='Show subtasks'>
-              {SHOW_SUBTASKS_TYPE.map((option) => {
-                return (
-                  <Select.Item option={option} key={option.value}>
-                    <Flex flexDirection='column' alignItems='flex-start' gap={2}>
-                      <Flex gap={1} alignItems='baseline'>
-                        <Text fontSize='14px'>{option.label}</Text>
-                        {option.note && (
-                          <Text fontSize='12px' color='contentPlaceholder'>
-                            {option.note}
-                          </Text>
-                        )}
-                      </Flex>
-                      {option.describe && (
-                        <Text fontSize='11px' color='contentPlaceholder'>
-                          {option.describe}
-                        </Text>
-                      )}
-                    </Flex>
-                  </Select.Item>
-                );
-              })}
-            </Select.Group>
-          </Select.Content>
-        </Select.Root>
+        <SubtasksBadge />
         <Button
           variant='outlined'
           scale='xs'

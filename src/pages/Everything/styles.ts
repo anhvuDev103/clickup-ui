@@ -1,6 +1,6 @@
 import Page from '@layouts/components/Page';
 import { Props as PageProps } from '@layouts/components/Page/types';
-import { Button } from '@uikit';
+import { Button, Flex } from '@uikit';
 import styled, { css } from 'styled-components';
 
 type EverythingFrameProps = PageProps & {
@@ -68,5 +68,16 @@ export const FilterBadge = styled(Button)`
     &:hover {
       background-color: ${({ theme }) => theme.colors.backgroundPrimaryOnSubtle};
     }
+  }
+`;
+
+export const SelectTrigger = styled(Flex)`
+  height: 32px;
+  padding: 7px;
+  border: 1px solid ${({ theme }) => theme.colors.borderHighContrast};
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
   }
 `;

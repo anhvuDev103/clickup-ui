@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react';
 import { SelectContext } from './types';
 
 export const Context = createContext<SelectContext>({
-  id: '',
+  ref: null,
   select: () => () => {},
 });
 

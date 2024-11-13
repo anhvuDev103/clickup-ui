@@ -6,6 +6,7 @@ export const GROUP_BY = [
     value: 'status',
     label: 'Status',
     icon: StatusIcon,
+    default: true,
   },
   {
     value: 'assignee',
@@ -50,6 +51,7 @@ export const SHOW_SUBTASKS_TYPE = [
     value: 'collapse',
     label: 'Collapse all',
     note: '(default)',
+    default: true,
   },
   {
     value: 'expand',

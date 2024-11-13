@@ -1,4 +1,5 @@
-import { useEffect, useId, useRef } from 'react';
+import _ from 'lodash';
+import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react';
 
 import { Context as SelectContext } from './context';
 import SelectContent from './SelectContent';
@@ -8,23 +9,26 @@ import SelectSeparator from './SelectSeparator';
 import SelectTrigger from './SelectTrigger';
 import { SelectOption, SelectRootProps } from './types';
 
-const SelectRoot: React.FC<SelectRootProps> = ({ children, selected, onSelect }) => {
-  const id = useId();
+const SelectRoot: React.FC<SelectRootProps> = ({ children, selected, onSelect, hideOnSelect = true }) => {
   const ref = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    ref.current = document.getElementById(id);
-  }, [id]);
 
   const select = (option: SelectOption) => () => {
     onSelect(option);
 
-    if (ref.current?._tippy) {
+    if (hideOnSelect && ref.current?._tippy) {
       ref.current._tippy.hide();
     }
   };
 
-  return <SelectContext.Provider value={{ id, selected, select }}>{children}</SelectContext.Provider>;
+  const [trigger, content] = _.sortBy(Children.toArray(children), (o) => isValidElement(o) && o.type !== SelectTrigger);
+
+  return (
+    <SelectContext.Provider value={{ selected, select, ref }}>
+      {cloneElement(content as React.ReactElement, {
+        trigger,
+      })}
+    </SelectContext.Provider>
+  );
 };
 
 const Select = {
