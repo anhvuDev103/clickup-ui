@@ -81,6 +81,7 @@ const styleVariants = {
 
 const Text = styled.div<TextProps>`
   line-height: 100%;
+  max-height: 100%;
 
   ${variant({
     variants: styleVariants,

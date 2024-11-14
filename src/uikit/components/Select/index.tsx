@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react';
+import { Children, cloneElement, isValidElement, useRef } from 'react';
 
 import { Context as SelectContext } from './context';
 import SelectContent from './SelectContent';

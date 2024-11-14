@@ -24,6 +24,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       labelPlacement,
       backgroundColorHover,
       colorHover,
+      textProps,
       ...props
     },
     ref,
@@ -39,14 +40,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         [scales.XL]: 'bold14',
       }[scale] as TextVariant);
 
-    const textColor =
-      props.color ||
-      {
-        [variants.CONTAINED]: 'contentOnDark',
-        [variants.OUTLINED]: 'contentButton',
-        [variants.TEXT]: 'contentTertiary',
-      }[variant];
-
     const button = (
       <ButtonFrame
         scale={scale}
@@ -59,7 +52,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {startIcon && <div className='Button_startIcon'>{startIcon}</div>}
 
-        <Text variant={textVariant} className='Button_label'>
+        <Text variant={textVariant} className='Button_label' {...textProps}>
           {children}
         </Text>
 

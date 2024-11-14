@@ -3,7 +3,7 @@ import { Placement } from '@popperjs/core';
 import { Color } from '@vite-env';
 import { BorderProps, ColorProps, FlexboxProps, LayoutProps, SpaceProps } from 'styled-system';
 
-import { Variant as TextVariant } from '../Text/types';
+import { TextProps, Variant as TextVariant } from '../Text/types';
 
 export const scales = {
   XXS: 'xxs',
@@ -39,6 +39,7 @@ export interface ButtonProps
   textVariant?: TextVariant;
   backgroundColorHover?: Color;
   colorHover?: Color;
+  textProps?: TextProps;
 
   label?: string;
   labelPlacement?: Placement;

@@ -1,5 +1,6 @@
 export * from './components/Box';
 export { default as Button } from './components/Button';
+export { default as Drawer } from './components/Drawer';
 export { default as DropdownMenu } from './components/DropdownMenu';
 export { default as Image } from './components/Image';
 export * from './components/Modal';

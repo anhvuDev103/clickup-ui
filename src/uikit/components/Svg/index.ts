@@ -1,6 +1,7 @@
 export { default as AddIcon } from './Add';
 export { default as AddCircleIcon } from './AddCircle';
 export { default as AddReactIcon } from './AddReact';
+export { default as ArrowLeftIcon } from './ArrowLeft';
 export { default as BoardViewIcon } from './BoardView';
 export { default as BrushIcon } from './Brush';
 export { default as CalendarViewIcon } from './CalendarView';
@@ -12,6 +13,7 @@ export { default as ChevronDownIcon } from './ChevronDown';
 export { default as CircleCheckFilledIcon } from './CircleCheckFilled';
 export { default as ClickappIcon } from './Clickapp';
 export { default as ClockIcon } from './Clock';
+export { default as CloseIcon } from './Close';
 export { default as ColumnIcon } from './Column';
 export { default as CommandIcon } from './Command';
 export { default as CustomizeIcon } from './Customize';

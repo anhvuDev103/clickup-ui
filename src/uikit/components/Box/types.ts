@@ -19,4 +19,5 @@ export interface BoxProps
 
 export interface FlexProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>, BoxProps, FlexboxProps {
   gap?: number | `${number}px`;
+  column?: boolean;
 }

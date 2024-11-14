@@ -41,6 +41,7 @@ const Login = () => {
             </Text>
 
             <Input
+              scale='lg'
               label='Work Email'
               startIcon={<EmailIcon width={20} height={20} color='contentIcon' />}
               error={errors.email?.message}
@@ -51,6 +52,7 @@ const Login = () => {
               mb={26}
             />
             <Input
+              scale='lg'
               label='Password'
               startIcon={<PasswordIcon width={20} height={20} color='contentIcon' />}
               error={errors.password?.message}

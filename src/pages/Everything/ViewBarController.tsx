@@ -1,5 +1,5 @@
 import Tabs from '@components/Tabs';
-import { Button, Flex, Separator } from '@uikit';
+import { Button, Drawer, Flex, Separator } from '@uikit';
 import {
   AddIcon,
   BoardViewIcon,
@@ -12,6 +12,7 @@ import {
   SettingsIcon,
 } from '@uikit/icons';
 
+import ColumnsBadge from './ColumnsBadge';
 import GroupBadge from './GroupBadge';
 import SubtasksBadge from './SubtasksBadge';
 
@@ -94,16 +95,7 @@ const ViewBarController: React.FC<Props> = ({ isExpandHeader, toggleExpandHeader
       >
         <GroupBadge />
         <SubtasksBadge />
-        <Button
-          variant='outlined'
-          scale='xs'
-          borderRadius='12px'
-          borderColor='borderControlTagBorder'
-          color='contentControlTag'
-          startIcon={<ColumnIcon width={14} height={14} />}
-        >
-          Columns
-        </Button>
+        <ColumnsBadge />
       </Flex>
     </>
   );

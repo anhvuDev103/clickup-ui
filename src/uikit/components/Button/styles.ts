@@ -1,7 +1,7 @@
 import { getColor } from '@uikit/utils';
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
 import styled, { css } from 'styled-components';
-import { border, color, flexbox, space, variant } from 'styled-system';
+import { border, color, flexbox, layout, space, variant } from 'styled-system';
 
 import { ButtonProps, scales, variants } from './types';
 
@@ -227,5 +227,6 @@ export const ButtonFrame = styled.button<ButtonProps>`
   ${color};
   ${border};
   ${space};
+  ${layout}
   ${flexbox};
 `;

@@ -1,18 +1,47 @@
 import styled from 'styled-components';
-import { layout, space } from 'styled-system';
+import { border, layout, space, variant } from 'styled-system';
 
-import { InputProps } from './types';
+import { InputProps, scales } from './types';
+
+const scaleVariants = {
+  [scales.XXS]: {
+    '.Input_main': {
+      height: 20,
+    },
+  },
+  [scales.XS]: {
+    '.Input_main': {
+      height: 24,
+    },
+  },
+  [scales.MD]: {
+    '.Input_main': {
+      height: 32,
+    },
+  },
+  [scales.LG]: {
+    '.Input_main': {
+      height: 40,
+    },
+  },
+};
 
 export const InputFrame = styled.div<InputProps>`
   position: relative;
 
+  border-radius: 9px;
+  border: 1px solid ${({ theme }) => theme.colors.backgroundOnSubtleHover};
+
+  overflow: hidden;
+
+  ${variant({ prop: 'scale', variants: scaleVariants })};
+
   ${layout}
   ${space}
+  ${border}
 
   .Input_main {
     position: relative;
-
-    height: 40px;
   }
 
   .Input_startIcon {
@@ -37,8 +66,6 @@ export const InputFrame = styled.div<InputProps>`
     inset: 0;
 
     padding: 0 20px 0 36px;
-    border-radius: 9px;
-    border: 1px solid ${({ theme }) => theme.colors.backgroundOnSubtleHover};
   }
 
   .Input_error {

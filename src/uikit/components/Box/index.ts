@@ -1,6 +1,6 @@
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { background, border, color, flexbox, layout, position, space } from 'styled-system';
 
 import { BoxProps, FlexProps } from './types';
@@ -27,6 +27,14 @@ export const Flex = styled(Box)<FlexProps>`
   justify-content: space-between;
 
   gap: ${getGap};
+
+  ${({ column }) =>
+    column &&
+    css`
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+    `};
 
   ${flexbox};
 `;
