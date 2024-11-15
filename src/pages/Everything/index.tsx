@@ -33,7 +33,9 @@ const Everything = () => {
           <ViewBarController isExpandHeader={isExpandHeader} toggleExpandHeader={toggleExpandHeader} />
         </Flex>
 
-        <Tabs.Content value='list' component={<List />}></Tabs.Content>
+        <Flex id='Everything_tabContent' column flex={1}>
+          <Tabs.Content value='list' component={<List />} />
+        </Flex>
       </Tabs.Root>
     </EverythingFrame>
   );

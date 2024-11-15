@@ -1,5 +1,5 @@
 import { HttpStatus } from '@constants/enums';
-import { LocalStorageKey } from '@constants/localStorage';
+import { LocalStorageKey } from '@constants/enums';
 import { RefreshTokenRequest } from '@schemas/requests/auth';
 import { RefreshTokenResponse } from '@schemas/responses/auth';
 import axios, { AxiosInstance, AxiosRequestHeaders, AxiosResponse } from 'axios';

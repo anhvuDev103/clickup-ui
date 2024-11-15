@@ -16,6 +16,6 @@ export interface DrawerTriggerProps {
   children: React.ReactNode;
 }
 
-export interface DrawerContentProps extends PaperProps {
-  children: React.ReactNode;
+export interface DrawerContentProps extends Omit<PaperProps, 'children'> {
+  children: React.ReactNode | (({ close }: { close: () => void }) => React.ReactNode);
 }

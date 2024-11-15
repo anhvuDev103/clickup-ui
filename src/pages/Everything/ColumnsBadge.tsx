@@ -1,10 +1,33 @@
-import { Button, Drawer, Flex, Text } from '@uikit';
+import { ColumnFieldsType } from '@constants/enums';
+import { COLUMNS } from '@constants/shared';
+import { ColumnField } from '@schemas/shared';
+import { Box, Button, Drawer, Flex, Switch, Text } from '@uikit';
 import Input from '@uikit/components/Input';
 import { ArrowLeftIcon, CloseIcon, ColumnIcon, SearchIcon } from '@uikit/icons';
+import _ from 'lodash';
+import { useState } from 'react';
 
 const ColumnsBadge = () => {
+  const [fields, setFields] = useState(_.groupBy<ColumnField>(COLUMNS, 'default'));
+
+  const renderSwitchsByType = (type: ColumnFieldsType) => {
+    return fields[type].map((field) => {
+      const Icon = field.icon;
+      return (
+        <Switch disabled={field.disabed}>
+          <Flex gap='12px'>
+            <Icon width='16px' height='16px' />
+            <Text fontSize='14px' color='currentColor'>
+              {field.label}
+            </Text>
+          </Flex>
+        </Switch>
+      );
+    });
+  };
+
   return (
-    <Drawer.Root containerSelector='.Page_body'>
+    <Drawer.Root containerSelector='#Everything_tabContent'>
       <Drawer.Trigger>
         <Button
           variant='outlined'
@@ -18,36 +41,59 @@ const ColumnsBadge = () => {
         </Button>
       </Drawer.Trigger>
       <Drawer.Content px={0} py='12px'>
-        <Flex width='100%' height='100%' column justifyContent='flex-start'>
-          <Flex pr='12px' pb={2} pl='16px' gap={2}>
-            <Button scale='xs' variant='text' square>
-              <ArrowLeftIcon width='16px' height='16px' color='contentButton' />
-            </Button>
-            <Text variant='semi16'>Fields</Text>
-            <Button variant='text' square ml='auto'>
-              <CloseIcon width='16px' height='16px' color='contentButton' />
-            </Button>
-          </Flex>
-          <Flex column px='12px'>
-            <Input
-              borderRadius='6px'
-              startIcon={<SearchIcon width='16px' height='16px' color='contentIcon' />}
-              inputProps={{
-                placeholder: 'Search...',
-              }}
-            />
-            <Flex column>
-              <Flex py={2}>
-                <Button variant='text' scale='xxs' height='16px' backgroundColorHover='transparent'>
-                  Shown
-                </Button>
-                <Button variant='text' scale='xxs' height='16px' backgroundColorHover='transparent'>
-                  Hide all
-                </Button>
+        {({ close }) => (
+          <Flex width='100%' height='100%' column justifyContent='flex-start'>
+            <Flex pr='12px' pb={2} pl='16px' gap={2}>
+              <Button scale='xs' variant='text' square label='Back'>
+                <ArrowLeftIcon width='16px' height='16px' color='contentButton' />
+              </Button>
+              <Text variant='semi16'>Fields</Text>
+              <Button variant='text' square ml='auto' label='Close' labelPlacement='left' onClick={close}>
+                <CloseIcon width='16px' height='16px' color='contentButton' />
+              </Button>
+            </Flex>
+            <Flex column overflowY='hidden'>
+              <Input
+                borderRadius='6px'
+                startIcon={<SearchIcon width='16px' height='16px' color='contentIcon' />}
+                inputProps={{
+                  placeholder: 'Search...',
+                }}
+                flexShrink={0}
+                mx='12px'
+              />
+              <Flex column overflowY='auto' mb='40px'>
+                <Flex column mx={2}>
+                  <Flex py={2}>
+                    <Text color='contentTertiary' fontWeight={500} px={2}>
+                      Shown
+                    </Text>
+                    <Button variant='text' scale='xxs' height='16px' backgroundColorHover='transparent'>
+                      Hide all
+                    </Button>
+                  </Flex>
+                  {renderSwitchsByType(ColumnFieldsType.Shown)}
+                  <Flex py={2}>
+                    <Text color='contentTertiary' fontWeight={500} px={2}>
+                      Popular
+                    </Text>
+                  </Flex>
+                  {renderSwitchsByType(ColumnFieldsType.Popular)}
+
+                  <Flex py={2}>
+                    <Text color='contentTertiary' fontWeight={500} px={2}>
+                      Hidden
+                    </Text>
+                  </Flex>
+                  {renderSwitchsByType(ColumnFieldsType.Hidden)}
+                </Flex>
               </Flex>
+              <Box p='16px' pb={1} borderTop='1px solid' borderColor='borderDefault'>
+                <Button width='100%'>Create Field</Button>
+              </Box>
             </Flex>
           </Flex>
-        </Flex>
+        )}
       </Drawer.Content>
     </Drawer.Root>
   );

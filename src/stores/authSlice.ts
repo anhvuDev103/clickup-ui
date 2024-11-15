@@ -1,4 +1,4 @@
-import { LocalStorageKey } from '@constants/localStorage';
+import { LocalStorageKey } from '@constants/enums';
 import _ from 'lodash';
 import { StateCreator } from 'zustand';
 

@@ -11,3 +11,14 @@ export enum HttpStatus {
 
   InternalServerError = 500,
 }
+
+export enum LocalStorageKey {
+  AccessToken = 'access_token',
+  RefreshToken = 'refresh_token',
+}
+
+export enum ColumnFieldsType {
+  Shown = 'shown',
+  Popular = 'popular',
+  Hidden = 'hidden',
+}

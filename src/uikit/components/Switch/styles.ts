@@ -1,22 +1,24 @@
 import { FlexProps } from '@uikit/types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { space, SpaceProps } from 'styled-system';
 
 import { Flex } from '../Box';
 
-export const SwitchToggleFrame = styled.input`
+export const SwitchToggleFrame = styled.input<SpaceProps>`
   appearance: none;
   color: ${({ theme }) => theme.colors.contentPlaceholder};
 
   width: 24px;
   height: 14px;
   background-color: currentColor;
-  margin-block: 3px;
 
   border-radius: 999px;
   border: 2px solid;
   border-color: currentColor;
 
   position: relative;
+
+  ${space}
 
   &::before {
     content: '';
@@ -48,12 +50,32 @@ SwitchToggleFrame.defaultProps = {
   type: 'checkbox',
 };
 
-export const SwitchFrame = styled(Flex)<FlexProps & { as?: string }>`
+export const SwitchFrame = styled(Flex)<FlexProps & { as?: string; disabled?: boolean }>`
   border-radius: 6px;
+  color: ${({ theme }) => theme.colors.contentDefault};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.backgroundMainHoverStrong};
+  ${({ disabled, theme }) =>
+    disabled &&
+    css`
+      cursor: not-allowed;
+      color: ${theme.colors.contentDisabled};
 
-    cursor: pointer;
-  }
+      input {
+        pointer-events: none;
+      }
+    `}
+
+  ${({ disabled, theme }) =>
+    !disabled &&
+    css`
+      svg {
+        color: ${({ theme }) => theme.colors.contentTertiary};
+      }
+
+      &:hover {
+        background-color: ${theme.colors.backgroundMainHoverStrong};
+
+        cursor: pointer;
+      }
+    `}
 `;

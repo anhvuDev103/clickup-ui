@@ -1,4 +1,4 @@
-import { BorderProps, LayoutProps, SpaceProps } from 'styled-system';
+import { BorderProps, FlexShrinkProps, LayoutProps, SpaceProps } from 'styled-system';
 
 import { Variant as TextVariant } from '../Text/types';
 
@@ -12,7 +12,7 @@ export const scales = {
 
 type Scale = (typeof scales)[keyof typeof scales];
 
-export interface InputProps extends LayoutProps, SpaceProps, BorderProps {
+export interface InputProps extends LayoutProps, SpaceProps, BorderProps, FlexShrinkProps {
   scale?: Scale;
   label?: string;
   startIcon?: React.ReactNode;

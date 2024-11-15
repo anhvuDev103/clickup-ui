@@ -1,5 +1,5 @@
 import Avatar from '@components/Avatar';
-import { LocalStorageKey } from '@constants/localStorage';
+import { LocalStorageKey } from '@constants/enums';
 import useAppDataProvider from '@hooks/useAppDataProvider';
 import useToggle from '@hooks/useToggle';
 import { useRootStore } from '@stores/root';

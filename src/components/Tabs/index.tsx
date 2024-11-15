@@ -12,7 +12,6 @@ interface Props {
 
 const TabsRoot: React.FC<Props> = ({ defaultValue, children }) => {
   const [tab, setTab] = useState(defaultValue);
-  console.log('>> Check | tab:', tab);
 
   const activateTab = (tab: string) => () => {
     setTab(tab);

@@ -2,11 +2,16 @@ import Text from '../Text';
 import { SwitchFrame, SwitchToggleFrame } from './styles';
 import { Props } from './types';
 
-const Switch: React.FC<Props> = ({ label, ...props }) => {
+const Switch: React.FC<Props> = ({ label, children, handlerProps, ...props }) => {
   return (
     <SwitchFrame p={2} border='6px' width='100%' as='label' {...props}>
-      <Text variant='regular14'>{label}</Text>
-      <SwitchToggleFrame />
+      {label && (
+        <Text variant='regular14' color='currentColor'>
+          {label}
+        </Text>
+      )}
+      {children}
+      <SwitchToggleFrame {...handlerProps} />
     </SwitchFrame>
   );
 };

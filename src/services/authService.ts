@@ -1,4 +1,4 @@
-import { LocalStorageKey } from '@constants/localStorage';
+import { LocalStorageKey } from '@constants/enums';
 import { SignInRequest } from '@schemas/requests/auth';
 import { SignInResponse } from '@schemas/responses/auth';
 

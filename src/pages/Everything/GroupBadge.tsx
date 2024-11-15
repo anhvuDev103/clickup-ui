@@ -72,7 +72,7 @@ const GroupBadge = () => {
                         </Select.Group>
                         <Select.Separator />
                         <Select.Group>
-                          <Switch label='Also group by List' />
+                          <Switch label='Also group by List' handlerProps={{ my: '3px' }} />
                         </Select.Group>
                       </Select.Content>
                     </Select.Root>
@@ -130,7 +130,7 @@ const GroupBadge = () => {
               </>
               <Select.Separator />
               <Select.Group>
-                <Switch label='Also group by List' />
+                <Switch label='Also group by List' handlerProps={{ my: '3px' }} />
               </Select.Group>
             </>
           );

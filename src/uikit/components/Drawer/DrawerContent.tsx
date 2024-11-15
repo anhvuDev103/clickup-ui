@@ -39,6 +39,21 @@ const DrawerContent: React.FC<DrawerContentProps> = ({ children, ...props }) => 
     return null;
   }
 
+  if (typeof children === 'function') {
+    return createPortal(
+      <DrawerContentFrame
+        className={classNames({
+          DrawerContent_open: open,
+        })}
+        ref={ref}
+        {...props}
+      >
+        {children({ close: () => toggleOpen(false) })}
+      </DrawerContentFrame>,
+      container,
+    );
+  }
+
   return createPortal(
     <DrawerContentFrame
       className={classNames({

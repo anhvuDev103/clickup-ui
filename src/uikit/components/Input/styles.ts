@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { border, layout, space, variant } from 'styled-system';
+import { border, flexShrink, layout, space, variant } from 'styled-system';
 
 import { InputProps, scales } from './types';
 
@@ -39,6 +39,7 @@ export const InputFrame = styled.div<InputProps>`
   ${layout}
   ${space}
   ${border}
+  ${flexShrink}
 
   .Input_main {
     position: relative;

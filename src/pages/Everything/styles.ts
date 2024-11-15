@@ -8,6 +8,12 @@ type EverythingFrameProps = PageProps & {
 };
 
 export const EverythingFrame = styled(Page)<EverythingFrameProps>`
+  .Page_body {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .Everything_expandHeader {
     transition: 400ms;
     height: 68px;
