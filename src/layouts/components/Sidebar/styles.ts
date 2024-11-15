@@ -59,13 +59,7 @@ export const SidebarItemFlex = styled(Flex)`
   }
 `;
 
-export const SidebarItemFrame = styled(NavLink)`
-  &.active {
-    ${SidebarItemFlex} {
-      background-color: ${({ theme }) => theme.colors.backgroundPrimaryOnSubtle};
-    }
-  }
-`;
+export const SidebarItemFrame = styled(Flex)``;
 
 export const NavigatorFrame = styled(Flex)``;
 
@@ -187,7 +181,9 @@ export const SpacesFrame = styled(Flex)`
   }
 `;
 
-export const SpaceItemFrame = styled(SidebarItem)``;
+export const SpaceItemFrame = styled(SidebarItem)`
+  width: 100%;
+`;
 
 export const SpaceTreeFrame = styled(Box)`
   [role='tree'] {

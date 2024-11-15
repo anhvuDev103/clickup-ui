@@ -1,7 +1,9 @@
 import { HttpStatus } from '@constants/enums';
 import { LocalStorageKey } from '@constants/enums';
+import { WORKSPACE_ID_HEADERS } from '@constants/shared';
 import { RefreshTokenRequest } from '@schemas/requests/auth';
 import { RefreshTokenResponse } from '@schemas/responses/auth';
+import { useRootStore } from '@stores/root';
 import axios, { AxiosInstance, AxiosRequestHeaders, AxiosResponse } from 'axios';
 
 export interface ApiReponse<T = undefined> {
@@ -33,6 +35,10 @@ class Http {
           ...request,
           headers,
         };
+
+        if (useRootStore.getState().workspace) {
+          request.headers[WORKSPACE_ID_HEADERS] = useRootStore.getState().workspace?._id;
+        }
 
         return request;
       },

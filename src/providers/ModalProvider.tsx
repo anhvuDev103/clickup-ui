@@ -11,7 +11,7 @@ interface Props {
 const ModalProvider: React.FC<Props> = ({ children }) => {
   const [modal, setModal] = useState<ModalContextType['modal']>(null);
 
-  const open = (name: ModalKey, args: Record<string, unknown>) => {
+  const open = (name: ModalKey, args?: Record<string, unknown>) => {
     setModal({ name, args });
   };
 

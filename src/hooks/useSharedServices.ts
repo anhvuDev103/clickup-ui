@@ -1,7 +1,7 @@
 import { SharedServicesContext as Context } from '@providers/contexts';
 import { useContext } from 'react';
 
-const useSharedServicesProvider = () => {
+const useSharedServices = () => {
   const context = useContext(Context);
 
   if (!context) throw new Error('Component should be wrapped inside <SharedServicesProvider/>');
@@ -9,4 +9,4 @@ const useSharedServicesProvider = () => {
   return context;
 };
 
-export default useSharedServicesProvider;
+export default useSharedServices;

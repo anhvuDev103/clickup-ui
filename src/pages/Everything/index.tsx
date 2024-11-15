@@ -33,7 +33,13 @@ const Everything = () => {
           <ViewBarController isExpandHeader={isExpandHeader} toggleExpandHeader={toggleExpandHeader} />
         </Flex>
 
-        <Flex id='Everything_tabContent' column flex={1}>
+        <Flex
+          id='Everything_tabContent'
+          flexDirection='column'
+          alignItems='stretch'
+          justifyContent='flex-start'
+          flex={1}
+        >
           <Tabs.Content value='list' component={<List />} />
         </Flex>
       </Tabs.Root>

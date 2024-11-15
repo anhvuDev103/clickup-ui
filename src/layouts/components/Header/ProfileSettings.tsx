@@ -1,6 +1,6 @@
 import Avatar from '@components/Avatar';
 import { LocalStorageKey } from '@constants/enums';
-import useAppDataProvider from '@hooks/useAppDataProvider';
+import useAppData from '@hooks/useAppData';
 import useToggle from '@hooks/useToggle';
 import { useRootStore } from '@stores/root';
 import { Button, DropdownMenu, Flex, Text } from '@uikit';
@@ -27,7 +27,7 @@ import { ProfileSettingsFrame, ProfileSettingsHandler, ProfileSettingsPaper } fr
 const ProfileSettings = () => {
   const navigate = useNavigate();
   const { setIsSignedIn } = useRootStore();
-  const { user } = useAppDataProvider();
+  const { user } = useAppData();
 
   const [visible, toggleVisible] = useToggle();
 

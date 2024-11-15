@@ -1,29 +1,53 @@
 import { FlexProps } from '@uikit/types';
 import styled, { css } from 'styled-components';
-import { space, SpaceProps } from 'styled-system';
+import { space, variant } from 'styled-system';
 
 import { Flex } from '../Box';
+import { HandlerProps, scales } from './types';
 
-export const SwitchToggleFrame = styled.input<SpaceProps>`
+const scaleVariants = {
+  [scales.SM]: {
+    width: '24px',
+    height: '14px',
+    border: '2px solid',
+
+    '&::before': {
+      width: '10px',
+      height: '10px',
+    },
+  },
+  [scales.MD]: {
+    width: '36px',
+    height: '21px',
+    border: '3px solid',
+
+    '&::before': {
+      width: '15px',
+      height: '15px',
+    },
+  },
+};
+
+export const SwitchToggleFrame = styled.input<HandlerProps>`
   appearance: none;
   color: ${({ theme }) => theme.colors.contentPlaceholder};
 
-  width: 24px;
-  height: 14px;
   background-color: currentColor;
 
   border-radius: 999px;
-  border: 2px solid;
   border-color: currentColor;
 
   position: relative;
+
+  ${variant({
+    prop: 'scale',
+    variants: scaleVariants,
+  })}
 
   ${space}
 
   &::before {
     content: '';
-    width: 10px;
-    height: 10px;
     border-radius: 50%;
     background-color: ${({ theme }) => theme.colors.contentOnDark};
 
@@ -48,6 +72,7 @@ export const SwitchToggleFrame = styled.input<SpaceProps>`
 
 SwitchToggleFrame.defaultProps = {
   type: 'checkbox',
+  scale: scales.MD,
 };
 
 export const SwitchFrame = styled(Flex)<FlexProps & { as?: string; disabled?: boolean }>`

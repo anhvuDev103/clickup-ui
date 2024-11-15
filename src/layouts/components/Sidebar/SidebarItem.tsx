@@ -3,15 +3,9 @@ import { forwardRef } from 'react';
 
 import { SidebarItemFlex, SidebarItemFrame } from './styles';
 
-interface Props extends Omit<FlexProps, 'ref'> {
-  to: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref?: any;
-}
-
-const SidebarItem: React.FC<Props> = forwardRef(({ to, children, ...props }, ref: React.Ref<HTMLAnchorElement>) => {
+const SidebarItem = forwardRef<HTMLDivElement, FlexProps>(({ children, ...props }, ref) => {
   return (
-    <SidebarItemFrame to={to} ref={ref}>
+    <SidebarItemFrame ref={ref}>
       <SidebarItemFlex {...props}>{children}</SidebarItemFlex>
     </SidebarItemFrame>
   );

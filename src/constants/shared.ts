@@ -23,6 +23,8 @@ import {
 
 import { ColumnFieldsType } from './enums';
 
+export const WORKSPACE_ID_HEADERS = 'X-Workspace-Id';
+
 export const COLUMNS = [
   //Shown
   {

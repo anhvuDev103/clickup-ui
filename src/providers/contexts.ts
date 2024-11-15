@@ -5,6 +5,7 @@ import { AppDataContextType, ModalContextType, SharedServicesContextType } from 
 export const SharedServicesContext = createContext<SharedServicesContextType>({
   authService: null,
   usersService: null,
+  hierarchyService: null,
 });
 
 export const AppDataContext = createContext<AppDataContextType>({

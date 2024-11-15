@@ -28,14 +28,6 @@ export const Flex = styled(Box)<FlexProps>`
 
   gap: ${getGap};
 
-  ${({ column }) =>
-    column &&
-    css`
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-    `};
-
   ${flexbox};
 `;
 

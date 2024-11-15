@@ -14,7 +14,7 @@ const ColumnsBadge = () => {
     return fields[type].map((field) => {
       const Icon = field.icon;
       return (
-        <Switch disabled={field.disabed}>
+        <Switch disabled={field.disabed} handlerProps={{ scale: 'sm' }} key={field.label}>
           <Flex gap='12px'>
             <Icon width='16px' height='16px' />
             <Text fontSize='14px' color='currentColor'>
@@ -42,7 +42,7 @@ const ColumnsBadge = () => {
       </Drawer.Trigger>
       <Drawer.Content px={0} py='12px'>
         {({ close }) => (
-          <Flex width='100%' height='100%' column justifyContent='flex-start'>
+          <Flex width='100%' height='100%' flexDirection='column' alignItems='stretch' justifyContent='flex-start'>
             <Flex pr='12px' pb={2} pl='16px' gap={2}>
               <Button scale='xs' variant='text' square label='Back'>
                 <ArrowLeftIcon width='16px' height='16px' color='contentButton' />
@@ -52,7 +52,7 @@ const ColumnsBadge = () => {
                 <CloseIcon width='16px' height='16px' color='contentButton' />
               </Button>
             </Flex>
-            <Flex column overflowY='hidden'>
+            <Flex flexDirection='column' alignItems='stretch' justifyContent='flex-start' overflowY='hidden'>
               <Input
                 borderRadius='6px'
                 startIcon={<SearchIcon width='16px' height='16px' color='contentIcon' />}
@@ -62,8 +62,8 @@ const ColumnsBadge = () => {
                 flexShrink={0}
                 mx='12px'
               />
-              <Flex column overflowY='auto' mb='40px'>
-                <Flex column mx={2}>
+              <Flex flexDirection='column' alignItems='stretch' justifyContent='flex-start' overflowY='auto' mb='40px'>
+                <Flex flexDirection='column' alignItems='stretch' justifyContent='flex-start' mx={2}>
                   <Flex py={2}>
                     <Text color='contentTertiary' fontWeight={500} px={2}>
                       Shown

@@ -1,5 +1,5 @@
 import useLoginForm, { SignInSchema } from '@hooks/auth/useLoginForm';
-import useSharedServicesProvider from '@hooks/useSharedServicesProvider';
+import useSharedServices from '@hooks/useSharedServices';
 import { useRootStore } from '@stores/root';
 import { Button, Flex, Paper, Spinner, Text } from '@uikit';
 import Input from '@uikit/components/Input';
@@ -12,7 +12,7 @@ import { LoginFrame } from './styles';
 const Login = () => {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const { setIsSignedIn } = useRootStore();
-  const { authService } = useSharedServicesProvider();
+  const { authService } = useSharedServices();
   const {
     handleSubmit,
     register,
@@ -36,7 +36,7 @@ const Login = () => {
       <Paper width='100%' maxWidth='480px' px={60} py={30} borderRadius={12} className='Login_formModal'>
         <form onSubmit={handleSubmit(signIn)} className='Login_form'>
           <Flex width='100%' flexDirection='column' alignItems='stretch'>
-            <Text fontSize='32px' fontWeight={800} lineHeight={1.5} textAlign='center' mb={20}>
+            <Text fontSize='32px' fontWeight={800} textAlign='center' mb={20}>
               Welcome back!
             </Text>
 

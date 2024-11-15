@@ -1,6 +1,6 @@
 import { ApiReponse } from '@services/httpService';
 
-interface Workspace {
+export interface Workspace {
   _id: string;
   name: string;
   created_at: string;

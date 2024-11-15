@@ -1,11 +1,11 @@
 import { queryKeysFactory } from '@constants/queries';
-import useSharedServicesProvider from '@hooks/useSharedServicesProvider';
+import useSharedServices from '@hooks/useSharedServices';
 import { useRootStore } from '@stores/root';
 import { useQuery } from '@tanstack/react-query';
 
 const useUserSummary = () => {
   const { isSignedIn } = useRootStore();
-  const { usersService } = useSharedServicesProvider();
+  const { usersService } = useSharedServices();
 
   return useQuery({
     queryKey: queryKeysFactory.getProfile,
