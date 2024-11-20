@@ -1,6 +1,6 @@
 import { getColor } from '@uikit/utils';
 import { getSpacingValue } from '@uikit/utils/getSpacingValue';
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { border, color, flexbox, layout, space, variant } from 'styled-system';
 
 import { ButtonProps, scales, variants } from './types';
@@ -176,12 +176,23 @@ const scaleVariants = {
   },
 };
 
+const BtnSpin = keyframes`
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
 export const ButtonFrame = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
   flex-shrink: 0;
+
+  position: relative;
 
   &.Button_square,
   &.Button_circle {
@@ -196,6 +207,23 @@ export const ButtonFrame = styled.button<ButtonProps>`
 
     line-height: 1.5;
     color: currentColor;
+  }
+
+  &:has(.Button_spinner) {
+    *:not(.Button_spinner) {
+      visibility: hidden;
+    }
+
+    .Button_spinner {
+      width: 12px;
+      height: 12px;
+      border: solid 2px ${({ theme }) => theme.colors.borderButtonLoad};
+      border-bottom-color: ${({ theme }) => theme.colors.borderButtonLoadBottom};
+      border-radius: 50%;
+      position: absolute;
+
+      animation: ${BtnSpin} 1s linear infinite;
+    }
   }
 
   ${variant({ variants: buttonVariants })};

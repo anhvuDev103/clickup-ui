@@ -3,24 +3,34 @@ import useSharedServices from '@hooks/useSharedServices';
 import { Box, Button, Flex, Modal, Switch, Text } from '@uikit';
 import Input from '@uikit/components/Input';
 import { ModalProps } from '@uikit/types';
+import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 
 const CreateSpace: React.FC<ModalProps> = ({ close }) => {
   const { hierarchyService } = useSharedServices();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
+    watch,
   } = useCreateSpaceForm();
-  console.log('>> Check | errors:', errors);
+
+  const isPrivate = watch('is_private');
 
   const createSpace: SubmitHandler<CreateSpaceSchema> = async (data) => {
-    console.log('>> Check | data:', data);
+    const member_emails = [] as string[];
+
     try {
-      await hierarchyService?.createSpace();
+      setIsLoading(true);
+      const response = await hierarchyService?.createSpace({ ...data, member_emails });
+      console.log('>> Check | response:', response);
     } catch (error) {
       console.error('Login failed', error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -58,11 +68,11 @@ const CreateSpace: React.FC<ModalProps> = ({ close }) => {
               M
             </Flex>
             <Input
-              borderRadius='8px'
               scale='lg'
               height='42px'
               flex={1}
               error={errors.name?.message}
+              borderRadius='6px'
               inputProps={{
                 placeholder: 'e.g. Marketing, Engineering, HR',
                 ...register('name', { required: true }),
@@ -96,19 +106,23 @@ const CreateSpace: React.FC<ModalProps> = ({ close }) => {
             <Switch
               compact
               handlerProps={{
-                ...register('private'),
+                ...register('is_private'),
               }}
             />
           </Flex>
-          <Flex mt='16px'>
-            <Text color='contentSecondary' fontSize='14px'>
-              Share only with:
-            </Text>
-          </Flex>
+          {isPrivate && (
+            <Flex mt='16px'>
+              <Text color='contentSecondary' fontSize='14px'>
+                Share only with:
+              </Text>
+            </Flex>
+          )}
         </Box>
         <Flex borderTop='1px solid' borderColor='borderDefault' p='16px' backgroundColor='backgroundSubtle'>
           <Button variant='text'>Use Templates</Button>
-          <Button type='submit'>Continue</Button>
+          <Button type='submit' loading={isLoading}>
+            Continue
+          </Button>
         </Flex>
       </form>
     </Modal>

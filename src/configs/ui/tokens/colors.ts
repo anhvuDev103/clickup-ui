@@ -33,6 +33,10 @@ export const lightColors = {
   borderLowContrast: '#f0f1f3',
   borderHighContrast: '#d6d9de',
   borderControlTagBorder: '#e8eaed',
+  borderDanger: '#d33d44',
+  borderDangerFocus: '#d33d44',
+  borderButtonLoad: '#ffffff',
+  borderButtonLoadBottom: '#ffffff33',
 
   //content
   contentDefault: '#2a2e34',
@@ -57,6 +61,7 @@ export const lightColors = {
 
   //effect
   effectPrimary: '#3db88b29',
+  effectDanger: '#d33d4429',
 };
 
 export const darkColors = {

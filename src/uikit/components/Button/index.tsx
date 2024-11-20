@@ -25,6 +25,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       backgroundColorHover,
       colorHover,
       textProps,
+      loading,
       ...props
     },
     ref,
@@ -57,6 +58,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         </Text>
 
         {endIcon && <div className='Button_endIcon'>{endIcon}</div>}
+
+        {loading && <div className='Button_spinner' />}
       </ButtonFrame>
     );
 

@@ -36,7 +36,6 @@ export const InputFrame = styled.div<InputProps>`
   ${variant({ prop: 'scale', variants: scaleVariants })};
 
   ${layout}
-  ${space}
   ${border}
   ${flexbox}
 
@@ -76,12 +75,31 @@ export const InputFrame = styled.div<InputProps>`
 
     padding: 0 20px 0 36px;
 
+    &:focus-visible {
+      box-shadow:
+        0 0 0 1px ${({ theme }) => theme.colors.borderPrimaryFocus},
+        0 0 0 4px ${({ theme }) => theme.colors.effectPrimary};
+    }
+
     ${space}
+    ${border}
   }
 
-  .Input_error {
-    position: absolute;
-    left: 0;
-    top: calc(100% + 2px);
+  &:has(.Input_error) {
+    input {
+      border-color: ${({ theme }) => theme.colors.borderDanger};
+
+      &:focus-visible {
+        box-shadow:
+          0 0 0 1px ${({ theme }) => theme.colors.borderDangerFocus},
+          0 0 0 4px ${({ theme }) => theme.colors.effectDanger};
+      }
+    }
+
+    .Input_error {
+      position: absolute;
+      left: 0;
+      top: calc(100% + 2px);
+    }
   }
 `;

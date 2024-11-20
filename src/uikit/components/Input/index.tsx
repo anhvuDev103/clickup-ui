@@ -28,10 +28,7 @@ const Input: React.FC<InputProps> = ({
 
       {error && (
         <Flex className='Input_error' justifyContent='unset'>
-          <WarningIcon width={12} height={12} color='contentError' mr='5px' />
-          <Text variant='medium12' color='contentError'>
-            {error}
-          </Text>
+          <Text color='contentError'>{error}</Text>
         </Flex>
       )}
     </InputFrame>

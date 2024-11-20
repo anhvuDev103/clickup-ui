@@ -17,6 +17,6 @@ export interface InputProps extends LayoutProps, SpaceProps, BorderProps, Flexbo
   label?: string;
   startIcon?: React.ReactNode;
   error?: string;
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement> & SpaceProps;
+  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
   labelVariant?: TextVariant;
 }

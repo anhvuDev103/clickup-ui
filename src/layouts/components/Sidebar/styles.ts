@@ -63,7 +63,9 @@ export const SidebarItemFrame = styled(Flex)``;
 
 export const NavigatorFrame = styled(Flex)``;
 
-export const NavigatorItem = styled(SidebarItem)``;
+export const NavigatorItem = styled(SidebarItem)`
+  width: 100%;
+`;
 
 export const FavoritesFrame = styled(Flex)`
   &.Favorites_isExpand {

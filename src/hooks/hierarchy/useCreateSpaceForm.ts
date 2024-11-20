@@ -13,7 +13,7 @@ const schema = z.object({
     .max(350, { message: 'Space description should not go over 350 characters' })
     .trim()
     .optional(),
-  private: z.boolean().optional(),
+  is_private: z.boolean(),
 });
 
 export type CreateSpaceSchema = z.infer<typeof schema>;
@@ -23,7 +23,7 @@ const useCreateSpaceForm = () => {
     defaultValues: {
       name: '',
       description: '',
-      private: false,
+      is_private: false,
     },
     mode: 'onSubmit',
     resolver: zodResolver(schema),

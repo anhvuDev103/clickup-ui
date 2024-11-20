@@ -1,11 +1,17 @@
+import { Flex } from '@uikit';
 import { FlexProps } from '@uikit/types';
 import { forwardRef } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { SidebarItemFlex, SidebarItemFrame } from './styles';
 
-const SidebarItem = forwardRef<HTMLDivElement, FlexProps>(({ children, ...props }, ref) => {
+interface Props extends FlexProps {
+  to?: string;
+}
+
+const SidebarItem = forwardRef<HTMLDivElement, Props>(({ children, to, ...props }, ref) => {
   return (
-    <SidebarItemFrame ref={ref}>
+    <SidebarItemFrame as={to ? NavLink : Flex} to={to} ref={ref}>
       <SidebarItemFlex {...props}>{children}</SidebarItemFlex>
     </SidebarItemFrame>
   );

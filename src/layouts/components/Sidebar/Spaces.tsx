@@ -33,7 +33,9 @@ const Spaces = () => {
 
       <Flex flexDirection='column' alignItems='stretch' justifyContent='unset' flex={1} px={2} pb='14px'>
         <SpaceItem label='Everything' icon={<EverythingIcon width={18} height={18} color='contentSecondary' />} />
+
         <SpaceTree />
+
         <SpaceItem label='View all spaces' icon={<SpacesIcon width={18} height={18} color='contentSecondary' />} />
         <SpaceItem
           label='Create Space'

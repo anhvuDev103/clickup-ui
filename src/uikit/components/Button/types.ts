@@ -45,6 +45,7 @@ export interface ButtonProps
   labelPlacement?: Placement;
   startIcon?: React.ReactNode;
   endIcon?: React.ReactNode;
+  loading?: boolean;
 
   children: React.ReactNode;
   className?: string;
